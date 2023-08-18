@@ -1,0 +1,24 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--color-primary-soft: #184263;
+		--color-primary-base: #1a1c26;
+		--color-primary-strong: #081621;
+
+		--color-secondary-soft: #85a7ad;
+		--color-secondary-base: #14161d;
+		--color-secondary-strong: #5a8087;
+
+		--color-terciary-soft: #5d517b;
+		--color-terciary-base: #14161d;
+		--color-terciary-strong: #38304a;
+	}
+
+	body {
+		background-color: var(--color-primary-base);
+	}
+}
