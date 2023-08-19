@@ -3,6 +3,6 @@ import { db } from '$lib/db/';
 
 export const load: PageServerLoad = async () => {
 	return {
-		ramais: await prisma.ramais.findMany()
+		ramais: await db.selectFrom('Ramais').selectAll().execute()
 	};
 };

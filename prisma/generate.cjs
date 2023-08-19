@@ -1,8 +1,7 @@
-
 const { Logger, DialectManager, Generator } = require('kysely-codegen');
 const { join } =  require('node:path');
 
-require('dotenv').config({ path: 'C:/Users/leo/Desktop/projetos/ramais/.env' })
+require('dotenv').config()
 
 async function generate() {
     const { DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_HOST, DATABASE_NAME } = process.env;
