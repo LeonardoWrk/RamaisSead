@@ -1,4 +1,5 @@
-import type { Actions } from './$types';
+import type { Actions, PageServerLoad } from './$types';
+
 import { db } from '$lib/db/';
 
 export const actions: Actions = {
@@ -27,3 +28,12 @@ export const actions: Actions = {
 		}
 	}
 };
+
+
+
+export const load: PageServerLoad = async () => {
+	return {
+		ramais: await db.selectFrom('Ramais').selectAll().execute()
+	};
+};
+
