@@ -1,12 +1,20 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 
+	let secret = generateSecret();
+	
 	let usuario = '';
 	let senha = '';
 
+	function generateSecret() {
+    // Gere um valor único (você pode usar bibliotecas para isso)
+    return Math.random().toString(36).substr(2, 8); // Exemplo simples de geração de valor único
+  	}
+
 	async function handlelogin() {
 		if (usuario === 'ramaisadm' && senha === '123') {
-			goto('/admin');
+			localStorage.setItem('adminSecret', secret); // Armazena o novo secret no armazenamento local
+			goto(`/admin?secret=${secret}`);
 		} else {
 			alert('senha ou usuario errados, tente novamente');
 		}

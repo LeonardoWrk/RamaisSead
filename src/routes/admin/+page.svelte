@@ -1,6 +1,26 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	
 	let auth = true;
-	import type { PageData } from './$types';
+	
+  	let authorized = false;
+	let adminSecret: string | null = null;// Variável para armazenar o "secret" da página de login
+
+
+  	// Define um bloco de código que será executado após o componente montar
+  	onMount(() => {
+    // Cria uma instância de URLSearchParams a partir da string de consulta na URL
+    const params = new URLSearchParams(window.location.search);
+    // Obtém o valor do parâmetro 'secret' da URL
+    adminSecret = params.get('secret');
+    
+    const expectedSecret = localStorage.getItem('adminSecret'); // Obtém o "secret" do armazenamento local
+
+    // Verifica se o valor do parâmetro 'secret' é igual ao "secret" esperado
+    authorized = adminSecret !== null && adminSecret === expectedSecret;
+  });
+
+
 
 	function open() {
 		auth = false;
@@ -12,6 +32,7 @@
 	$: ({ ramais } = data);
 </script>
 
+{#if authorized}
 <div class="flex justify-center">
 	<nav class=" bg-[#1a1c26] font-bold text-white p-3 drop-shadow-lg w-3/6 rounded-lg">
 		<div class="flex justify-center items-center">
@@ -236,9 +257,9 @@
 		</form>
 	</div>
 </div>
+{:else}
+<div class="text-white h-[80%] flex justify-center items-center font-bold text-2xl">
+	<h2> você não está autorizado a acessar esta página. </h2> 						
+</div>
+{/if}
 
-<style>
-	label {
-		display: block;
-	}
-</style>
