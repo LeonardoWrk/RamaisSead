@@ -1,6 +1,13 @@
 import type { Actions, PageServerLoad } from './$types';
 
 import { db } from '$lib/db/';
+import { fail } from '@sveltejs/kit';
+
+export const load: PageServerLoad = async () => {
+	return {
+		ramais: await db.selectFrom('Ramais').selectAll().execute()
+	};
+};
 
 export const actions: Actions = {
 	createRamais: async ({ request }) => {
@@ -26,14 +33,25 @@ export const actions: Actions = {
 		} catch (error) {
 			console.log(error);
 		}
+	},
+	deleteRamais: async ({ url }) => {
+		const ramal = url.searchParams.get("ramal")
+		if(!ramal){
+			return fail(400, {message: "invalid request "})
+		}
+		
+		try{
+			await db
+			.deleteFrom('Ramais')
+			.where('Ramais.ramal', '=', ramal)
+			.execute()
+		}
+	} catch (error){
+		console.log(error)
 	}
-};
+	
+},
 
 
 
-export const load: PageServerLoad = async () => {
-	return {
-		ramais: await db.selectFrom('Ramais').selectAll().execute()
-	};
-};
 
