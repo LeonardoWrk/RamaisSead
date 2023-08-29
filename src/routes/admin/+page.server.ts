@@ -1,6 +1,7 @@
 import type { Actions, PageServerLoad } from './$types';
 
 import { db } from '$lib/db/';
+import { fail } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async () => {
 	return {
@@ -33,12 +34,14 @@ export const actions: Actions = {
 		} catch (error) {
 			console.log(error);
 		}
+	},
+	deleteRamais: async ({ url }) => {
+		const id = url.searchParams.get('id');
+		if (!id) return fail(400, { message: 'invalid request ' });
+		try {
+			await db.deleteFrom('Ramais').where('Ramais.id', '=', parseInt(id)).execute();
+		} catch (error) {
+			console.log(error);
+		}
 	}
-},
-deleteramais: async ({ url }) => {
-	
-}
-
-
-
-
+};
