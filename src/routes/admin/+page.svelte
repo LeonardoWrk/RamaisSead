@@ -345,8 +345,5 @@
 		</div>
 	</div>
 {:else}
-	<div class="text-white h-[80%] flex justify-center items-center font-bold text-2xl">
-		" <h2>você não está autorizado a acessar esta página.</h2>
-		"
-	</div>
+	<div />
 {/if}
