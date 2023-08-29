@@ -236,6 +236,12 @@
 							{#each ramais as ramal}
 								{#if ramal.org.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.unidade
 										.toLowerCase()
+										.includes(pesquisa.toLowerCase()) || ramal.setor
+										.toLowerCase()
+										.includes(pesquisa.toLowerCase()) || ramal.user
+										.toLowerCase()
+										.includes(pesquisa.toLowerCase()) || ramal.ramal
+										.toLowerCase()
 										.includes(pesquisa.toLowerCase())}
 									<div class="flex w-full">
 										<span

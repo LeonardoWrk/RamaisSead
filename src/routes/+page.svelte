@@ -52,9 +52,15 @@
 				>
 			</div>
 
-			<div class="flex flex-col w-full bg-theme-base">
+			<div class="flex flex-col w-full bg-theme-base max-h-[600px] overflow-y-auto">
 				{#each ramais as ramal}
 					{#if ramal.org.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.unidade
+							.toLowerCase()
+							.includes(pesquisa.toLowerCase()) || ramal.setor
+							.toLowerCase()
+							.includes(pesquisa.toLowerCase()) || ramal.user
+							.toLowerCase()
+							.includes(pesquisa.toLowerCase()) || ramal.ramal
 							.toLowerCase()
 							.includes(pesquisa.toLowerCase())}
 						<div class="flex w-full">
