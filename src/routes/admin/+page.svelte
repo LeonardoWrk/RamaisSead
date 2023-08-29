@@ -123,7 +123,7 @@
 								<input class="uppercase w-[85%] h-8 text-black" required type="text" name="user" />
 							</div>
 							<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
-								<input class="uppercase w-[85%] h-8 text-black" required type="text" name="ramal" />
+								<input type="number" class="uppercase w-[85%] h-8 text-black" required name="ramal" />
 							</div>
 
 							<div

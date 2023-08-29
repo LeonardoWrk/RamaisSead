@@ -2,7 +2,14 @@ import type { Actions, PageServerLoad } from './$types';
 
 import { db } from '$lib/db/';
 
+export const load: PageServerLoad = async () => {
+	return {
+		ramais: await db.selectFrom('Ramais').selectAll().execute()
+	};
+};
+
 export const actions: Actions = {
+
 	createRamais: async ({ request }) => {
 		const { org, unidade, setor, user, ramal } = Object.fromEntries(await request.formData()) as {
 			org: string;
@@ -27,13 +34,11 @@ export const actions: Actions = {
 			console.log(error);
 		}
 	}
-};
+},
+deleteramais: async ({ url }) => {
+	
+}
 
 
 
-export const load: PageServerLoad = async () => {
-	return {
-		ramais: await db.selectFrom('Ramais').selectAll().execute()
-	};
-};
 
