@@ -35,23 +35,12 @@ export const actions: Actions = {
 		}
 	},
 	deleteRamais: async ({ url }) => {
-		const ramal = url.searchParams.get("ramal")
-		if(!ramal){
-			return fail(400, {message: "invalid request "})
+		const id = url.searchParams.get('id');
+		if (!id) return fail(400, { message: 'invalid request ' });
+		try {
+			await db.deleteFrom('Ramais').where('Ramais.id', '=', parseInt(id)).execute();
+		} catch (error) {
+			console.log(error);
 		}
-		
-		try{
-			await db
-			.deleteFrom('Ramais')
-			.where('Ramais.ramal', '=', ramal)
-			.execute()
-		}
-	} catch (error){
-		console.log(error)
 	}
-	
-},
-
-
-
-
+};
