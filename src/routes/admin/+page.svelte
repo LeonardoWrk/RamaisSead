@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { slide, fly, fade } from 'svelte/transition';
 
 	let expectedSecret: any;
 	let auth = true;
 	let edit = true;
+	let idR: any;
 
 	let authorized = false;
 	let adminSecret: string | null = null; // Variável para armazenar o "secret" da página de login
@@ -21,8 +23,10 @@
 		authorized = adminSecret !== null && adminSecret === expectedSecret;
 	});
 
-	function opne2() {
+	function opne2(ramal: any) {
 		edit = false;
+		idR = ramal;
+		console.log(ramal);
 	}
 
 	function open() {
@@ -37,8 +41,11 @@
 
 {#if authorized}
 	{#if !edit}
-		<div class=" absolute right-0 w-[30%] h-[100%] z-50 bg-[#1a1c26] drop-shadow-lg rounded-lg">
-			<div class="flex items-center rounded-md p-2">
+		<div
+			transition:slide={{ axis: 'x' }}
+			class=" absolute right-0 transform translate-y-[25%] z-50 bg-[#1a1c26] drop-shadow-lg rounded-lg border border-[#27293a]"
+		>
+			<div class="flex w-full items-center rounded-md p-2">
 				<button
 					type="button"
 					on:click={() => {
@@ -56,72 +63,64 @@
 						/></svg
 					>
 				</button>
+				<div class="ml-10 text-white text-xl font-extrabold">Atualizar</div>
 			</div>
-			<div class=" flex justify-around bg-theme-base">
-				<div class="flex-col flex w-full h-full text-black items-center">
-					<div
-						class=" flex-col flex justify-center items-center p-4 border w-[40%] border-[#27293a]"
-					>
-						<span
-							class=" h-full flex justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
-							>org</span
-						>
-						<input class="uppercase w-[85%] h-8 justify-center" type="text" name="org" />
-					</div>
+			<div class="w-full flex justify-around bg-theme-base">
+				<form
+					class="w-full"
+					action="?/updateramais&id={idR.id}&secret={expectedSecret}"
+					method="POST"
+				>
+					<div class="flex-col flex w-full h-full text-black items-center font-extrabold">
+						<div class="flex flex-col justify-center items-center p-4">
+							<label class="text-white p-2" for="org">Org</label>
+							<input
+								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								type="text"
+								name="org"
+							/>
+						</div>
 
-					<div
-						class=" flex-col flex justify-center items-center p-4 border w-[40%] border-[#27293a]"
-					>
-						<span
-							class=" h-full flex justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
-							>unidade</span
-						>
-						<input class="uppercase w-[85%] h-8 text-black" type="text" name="unidade" />
-					</div>
-					<div
-						class="flex-col flex justify-center items-center p-4 border w-[40%] border-[#27293a]"
-					>
-						<span
-							class=" h-full flex justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
-							>setor</span
-						>
-						<input class="uppercase w-[85%] h-8 text-black" type="text" name="setor" />
-					</div>
-					<div
-						class=" flex-col flex justify-center items-center p-4 border w-[40%] border-[#27293a]"
-					>
-						<span
-							class=" h-full flex justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
-							>user</span
-						>
-						<input class="uppercase w-[85%] h-8 text-black" type="text" name="user" />
-					</div>
-					<div
-						class=" flex-col flex justify-center items-center p-4 border w-[40%] border-[#27293a]"
-					>
-						<span
-							class=" h-full flex justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
-							>ramal</span
-						>
-						<input class="uppercase w-[85%] h-8 text-black" type="text" name="ramal" />
-					</div>
-
-					<div class="flex justify-center items-center text-black border border-[#27293a]">
-						<div class="flex justify-evenly items-center rounded-md p-2 bg-green-300">
-							<button on:click={opne2}>
-								<svg
-									class="h-[1.2em] text-blue-300"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="currentCOlor"
-									viewBox="0 0 512 512"
-									><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
-										d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"
-									/></svg
-								>
-							</button>
+						<div class="flex flex-col justify-center items-center p-4">
+							<label class="text-white p-2" for="org">Unidade</label>
+							<input
+								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								type="text"
+								name="unidade"
+							/>
+						</div>
+						<div class="flex flex-col justify-center items-center p-4">
+							<label class="text-white p-2" for="org">Setor</label>
+							<input
+								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								type="text"
+								name="setor"
+							/>
+						</div>
+						<div class="flex flex-col justify-center items-center p-4">
+							<label class="text-white p-2" for="org">User</label>
+							<input
+								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								type="text"
+								name="user"
+							/>
+						</div>
+						<div class="flex flex-col justify-center items-center p-4">
+							<label class="text-white p-2" for="org">Ramal</label>
+							<input
+								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								type="text"
+								pattern="[0-9/]*"
+								name="ramal"
+							/>
+						</div>
+						<div class="flex m-6 justify-center items-center border border-[#27293a]">
+							<div class="flex justify-evenly items-center rounded-md p-2 bg-green-300">
+								<button type="submit">Atualizar</button>
+							</div>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	{/if}
@@ -168,7 +167,7 @@
 					</div>
 				{/if}
 				<div class=" drop-shadow-lg rounded-lg flex flex-col h-[90vh] items-center text-white">
-					<div class="flex flex-col w-full mt-10 bg-theme-soft">
+					<div class="flex flex-col w-full bg-theme-soft">
 						<div class="flex w-full">
 							<span
 								class="border border-[#27293a] h-full flex justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
@@ -197,20 +196,41 @@
 						<div class="flex justify-around bg-theme-base">
 							<div class="flex w-full h-full text-black">
 								<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
-									<input class="uppercase w-[85%] h-8 justify-center" type="text" name="org" />
+									<input
+										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+										type="text"
+										name="org"
+									/>
 								</div>
 
 								<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
-									<input class="uppercase w-[85%] h-8 text-black" type="text" name="unidade" />
+									<input
+										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+										type="text"
+										name="unidade"
+									/>
 								</div>
 								<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
-									<input class="uppercase w-[85%] h-8 text-black" type="text" name="setor" />
+									<input
+										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+										type="text"
+										name="setor"
+									/>
 								</div>
 								<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
-									<input class="uppercase w-[85%] h-8 text-black" type="text" name="user" />
+									<input
+										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+										type="text"
+										name="user"
+									/>
 								</div>
 								<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
-									<input class="uppercase w-[85%] h-8 text-black" type="number" name="ramal" />
+									<input
+										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+										type="text"
+										pattern="[0-9/]*"
+										name="ramal"
+									/>
 								</div>
 
 								<div
@@ -279,7 +299,7 @@
 												>
 											</button>
 
-											<button type="button" on:click={opne2}>
+											<button type="button" on:click={() => opne2(ramal)}>
 												<svg
 													class="h-[1.2em] text-blue-300"
 													xmlns="http://www.w3.org/2000/svg"
@@ -329,7 +349,7 @@
 												>
 											</button>
 
-											<button on:click={opne2}>
+											<button on:click={() => opne2(ramal.id)}>
 												<svg
 													class="h-[1.2em] text-blue-300"
 													xmlns="http://www.w3.org/2000/svg"

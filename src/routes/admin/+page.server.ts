@@ -10,7 +10,6 @@ export const load: PageServerLoad = async () => {
 };
 
 export const actions: Actions = {
-
 	createRamais: async ({ request }) => {
 		const { org, unidade, setor, user, ramal } = Object.fromEntries(await request.formData()) as {
 			org: string;
@@ -42,6 +41,29 @@ export const actions: Actions = {
 			await db.deleteFrom('Ramais').where('Ramais.id', '=', parseInt(id)).execute();
 		} catch (error) {
 			console.log(error);
+		}
+	},
+	updateramais: async ({ request, url }) => {
+		let id: any = url.searchParams.get('id');
+		if (!id) return fail(400, { message: 'invalid request ' });
+		id = parseInt(id);
+		const { org, unidade, setor, user, ramal } = Object.fromEntries(await request.formData()) as {
+			org: string;
+			unidade: string;
+			setor: string;
+			user: string;
+			ramal: string;
+		};
+		console.log(org, unidade, setor, user, ramal);
+		try {
+			let teste = await db
+				.updateTable('Ramais')
+				.set({ org, unidade, setor, user, ramal })
+				.where('Ramais.id', '=', id)
+				.executeTakeFirst();
+			console.log('FUNCIONA', teste);
+		} catch (error) {
+			// console.log('ERROR', error);
 		}
 	}
 };

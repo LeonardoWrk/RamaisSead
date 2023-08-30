@@ -28,7 +28,7 @@
 	</div>
 
 	<div class=" drop-shadow-lg rounded-lg flex flex-col h-[90vh] mt-20 items-center text-white">
-		<div class="flex flex-col w-9/12 mt-10 bg-theme-soft">
+		<div class="flex flex-col w-9/12 bg-theme-soft">
 			<div class="flex w-full">
 				<span
 					class="border border-[#27293a] h-full flex justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
