@@ -50,6 +50,10 @@
 					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
 					>ramal</span
 				>
+				<span
+					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					>servico</span
+				>
 			</div>
 
 			<div class="flex flex-col w-full bg-theme-base max-h-[600px] overflow-y-auto">
@@ -84,6 +88,10 @@
 								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
 								>{ramal.ramal}</span
 							>
+							<span
+								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
+								>{ramal.servico}</span
+							>
 						</div>
 					{:else if !pesquisa}
 						<div class="flex border-[#27293a] w-full">
@@ -106,6 +114,10 @@
 							<span
 								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
 								>{ramal.ramal}</span
+							>
+							<span
+								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
+								>{ramal.servico}</span
 							>
 						</div>
 					{/if}

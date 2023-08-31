@@ -114,6 +114,14 @@
 								name="ramal"
 							/>
 						</div>
+						<div class="flex flex-col justify-center items-center p-4">
+							<label class="text-white p-2" for="org">servico</label>
+							<input
+								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								type="text"
+								name="servico"
+							/>
+						</div>
 						<div class="flex m-6 justify-center items-center border border-[#27293a]">
 							<div class="flex justify-evenly items-center rounded-md p-2 bg-green-300">
 								<button type="submit">Atualizar</button>
@@ -191,6 +199,10 @@
 							>
 							<span
 								class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
+								>servico</span
+							>
+							<span
+								class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
 							/>
 						</div>
 						<div class="flex justify-around bg-theme-base">
@@ -230,6 +242,13 @@
 										type="text"
 										pattern="[0-9/]*"
 										name="ramal"
+									/>
+								</div>
+								<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
+									<input
+										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+										type="text"
+										name="servico"
 									/>
 								</div>
 
@@ -285,6 +304,10 @@
 											>{ramal.ramal}</span
 										>
 										<span
+											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											>{ramal.servico}</span
+										>
+										<span
 											class="border h-full flex border-[#27293a] justify-evenly items-center w-1/6 p-2"
 										>
 											<button formaction="?/deleteRamais&id={ramal.id}&secret={expectedSecret}">
@@ -333,6 +356,10 @@
 										<span
 											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
 											>{ramal.ramal}</span
+										>
+										<span
+											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											>{ramal.servico}</span
 										>
 										<span
 											class="border h-full flex border-[#27293a] justify-evenly items-center w-1/6 p-2"
