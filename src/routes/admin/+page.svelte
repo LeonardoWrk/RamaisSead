@@ -178,36 +178,36 @@
 					<div class="flex flex-col w-full bg-theme-soft">
 						<div class="flex w-full">
 							<span
-								class="border border-[#27293a] h-full flex justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
+								class="border border-[#27293a] h-full flex justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
 								>org</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
+								class="border h-full flex border-[#27293a] justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
 								>unidade</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
+								class="border h-full flex border-[#27293a] justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
 								>setor</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
+								class="border h-full flex border-[#27293a] justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
 								>user</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
+								class="border h-full flex border-[#27293a] justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
 								>ramal</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
+								class="border h-full flex border-[#27293a] justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
 								>servico</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-4 font-bold uppercase text-xl"
+								class="border h-full flex border-[#27293a] justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
 							/>
 						</div>
 						<div class="flex justify-around bg-theme-base">
 							<div class="flex w-full h-full text-black">
-								<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[17%] p-4 border border-[#27293a]">
 									<input
 										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
 										type="text"
@@ -215,28 +215,28 @@
 									/>
 								</div>
 
-								<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[17%] p-4 border border-[#27293a]">
 									<input
 										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
 										type="text"
 										name="unidade"
 									/>
 								</div>
-								<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[17%] p-4 border border-[#27293a]">
 									<input
 										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
 										type="text"
 										name="setor"
 									/>
 								</div>
-								<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[17%] p-4 border border-[#27293a]">
 									<input
 										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
 										type="text"
 										name="user"
 									/>
 								</div>
-								<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[17%] p-4 border border-[#27293a]">
 									<input
 										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
 										type="text"
@@ -244,7 +244,7 @@
 										name="ramal"
 									/>
 								</div>
-								<div class="flex justify-center items-center w-1/6 p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[17%] p-4 border border-[#27293a]">
 									<input
 										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
 										type="text"
@@ -253,7 +253,7 @@
 								</div>
 
 								<div
-									class="flex justify-center w-1/6 items-center text-black border border-[#27293a]"
+									class="flex justify-center p-4 w-[17%] items-center text-black border border-[#27293a]"
 								>
 									<div class="flex justify-evenly items-center w-1/2 rounded-md p-2 bg-green-300">
 										<svg
