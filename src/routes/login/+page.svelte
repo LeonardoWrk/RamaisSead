@@ -2,14 +2,14 @@
 	import { goto } from '$app/navigation';
 
 	let secret = generateSecret();
-	
+
 	let usuario = '';
 	let senha = '';
 
 	function generateSecret() {
-    // Gere um valor único (você pode usar bibliotecas para isso)
-    return Math.random().toString(36).substr(2, 8); // Exemplo simples de geração de valor único
-  	}
+		// Gere um valor único (você pode usar bibliotecas para isso)
+		return Math.random().toString(36).substr(2, 8); // Exemplo simples de geração de valor único
+	}
 
 	async function handlelogin() {
 		if (usuario === 'ramaisadm' && senha === '123') {
@@ -31,14 +31,23 @@
 		<div class="flex flex-col mt-10 items-center">
 			<div class="w-[80%] flex flex-col">
 				<label class="text-white mb-2" for="username">Usuario</label>
-				<input class="rounded-md text-black text-2xl" id="user" bind:value={usuario} type="text" />
+				<input
+					class=" h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a] text-2xl"
+					id="user"
+					bind:value={usuario}
+					type="text"
+				/>
 			</div>
 
 			<div class="w-[80%] flex flex-col mt-10">
 				<label class="text-white mb-2" for="username">Senha</label>
-				<input class="rounded-md text-black text-2xl" id="pass" bind:value={senha} type="text" />
+				<input
+					class=" h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a] text-2xl"
+					id="pass"
+					bind:value={senha}
+					type="text"
+				/>
 			</div>
-
 			<button
 				type="submit"
 				class=" p-2 m-10 w-2/5 bg-theme-soft rounded-md active:scale-90 duration-100"
