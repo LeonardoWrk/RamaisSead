@@ -43,7 +43,7 @@
 	{#if !edit}
 		<div
 			transition:slide={{ axis: 'x' }}
-			class=" absolute right-0 transform translate-y-[25%] z-50 bg-[#1a1c26] drop-shadow-lg rounded-lg border border-[#27293a]"
+			class=" absolute right-0 transform translate-y-[15%] z-50 bg-[#1a1c26] drop-shadow-lg rounded-lg border border-[#27293a]"
 		>
 			<div class="flex w-full items-center rounded-md p-2">
 				<button
