@@ -176,38 +176,38 @@
 				{/if}
 				<div class=" drop-shadow-lg rounded-lg flex flex-col h-[90vh] items-center text-white">
 					<div class="flex flex-col w-full bg-theme-soft">
-						<div class="flex w-full">
+						<div class="flex w-full border border-[#27293a]">
 							<span
-								class="border border-[#27293a] h-full flex justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
+								class="border border-[#27293a] h-full flex justify-center items-center w-[14%] p-4 font-bold uppercase text-xl"
 								>org</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
+								class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-4 font-bold uppercase text-xl"
 								>unidade</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
+								class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-4 font-bold uppercase text-xl"
 								>setor</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
+								class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-4 font-bold uppercase text-xl"
 								>user</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
+								class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-4 font-bold uppercase text-xl"
 								>ramal</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
+								class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-4 font-bold uppercase text-xl"
 								>servico</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-[17%] p-4 font-bold uppercase text-xl"
+								class="h-full flex justify-center items-center w-[14%] p-4 font-bold uppercase text-xl"
 							/>
 						</div>
 						<div class="flex justify-around bg-theme-base">
-							<div class="flex w-full h-full text-black">
-								<div class="flex justify-center items-center w-[17%] p-4 border border-[#27293a]">
+							<div class="flex w-full h-full text-black border border-[#27293a]">
+								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">
 									<input
 										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
 										type="text"
@@ -215,28 +215,84 @@
 									/>
 								</div>
 
-								<div class="flex justify-center items-center w-[17%] p-4 border border-[#27293a]">
-									<input
+								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">
+									<select
 										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
-										type="text"
 										name="unidade"
-									/>
+									>
+										<option value="" />
+										<option value="SUPAT">SUPAT</option>
+										<option value="ASPOCT">ASPOCT</option>
+										<option value="NÚCLEO DE GESTÃO">NÚCLEO DE GESTÃO</option>
+										<option value="PERICIA">PERICIA</option>
+										<option value="CEAC-TURISTA">CEAC-TURISTA</option>
+										<option value="SGRH">SGRH</option>
+										<option value="GABINETE">GABINETE</option>
+										<option value="SGCC/COMPRAS">SGCC/COMPRAS</option>
+										<option value="DAF">DAF</option>
+										<option value="OUVIDORIA">OUVIDORIA</option>
+									</select>
 								</div>
-								<div class="flex justify-center items-center w-[17%] p-4 border border-[#27293a]">
-									<input
+
+								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">
+									<select
 										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
-										type="text"
 										name="setor"
-									/>
+									>
+										<option value="" />
+										<option value="ASCOM">ASCOM</option>
+										<option value="CPSIAD">CPSIAD</option>
+										<option value="ALMOXARIFADO">ALMOXARIFADO</option>
+										<option value="GERPS">GERPS</option>
+										<option value="GERFIN">GERFIN</option>
+										<option value="GERATA">GERATA</option>
+										<option value="SGCC">SGCC</option>
+										<option value="OUVIDORIA">OUVIDORIA</option>
+										<option value="PERICIA MEDICA">PERICIA MEDICA</option>
+										<option value="SETRANS">SETRANS</option>
+										<option value="DGSL">DGSL</option>
+										<option value="GERMACO">GERMACO</option>
+										<option value="GERSEP">GERSEP</option>
+										<option value="GERMASE">GERMASE</option>
+										<option value="GERAFOR">GERAFOR</option>
+										<option value="GABINETE">GABINETE</option>
+										<option value="RECEPÇÃO">RECEPÇÃO</option>
+										<option value="GECIF">GECIF</option>
+										<option value="CONCURSO">CONCURSO</option>
+										<option value="INDENIZACAO">INDENIZACAO</option>
+										<option value="GCSA">GCSA</option>
+										<option value="DGP">DGP</option>
+										<option value="GCDFF">GCDFF</option>
+										<option value="INCORPORAÇÃO">INCORPORAÇÃO</option>
+										<option value="GELOT">GELOT</option>
+										<option value="ASPOCT">ASPOCT</option>
+										<option value="DGPI">DGPI</option>
+										<option value="SUPAT">SUPAT</option>
+										<option value="DGPM">DGPM</option>
+										<option value="GEMOVE">GEMOVE</option>
+										<option value="DGP">DGP</option>
+										<option value="CONTABILIDADE">CONTABILIDADE</option>
+										<option value="NÚCLEO">NÚCLEO</option>
+										<option value="GUARITA">GUARITA</option>
+										<option value="SERVICO SOCIAL">SERVICO SOCIAL</option>
+										<option value="SECLOG">SECLOG</option>
+										<option value="DTIN">DTIN</option>
+										<option value="ADESP">ADESP</option>
+										<option value="DTI-TURISTA">DTI-TURISTA</option>
+										<option value="ACUMULO DE CARGOS">ACUMULO DE CARGOS</option>
+										<option value="PROTOCOLO">PROTOCOLO</option>
+										<option value="ESCOLA">ESCOLA</option>
+										<option value="GCLOG">GCLOG</option>
+									</select>
 								</div>
-								<div class="flex justify-center items-center w-[17%] p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">
 									<input
 										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
 										type="text"
 										name="user"
 									/>
 								</div>
-								<div class="flex justify-center items-center w-[17%] p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">
 									<input
 										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
 										type="text"
@@ -244,7 +300,7 @@
 										name="ramal"
 									/>
 								</div>
-								<div class="flex justify-center items-center w-[17%] p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">
 									<input
 										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
 										type="text"
@@ -252,10 +308,8 @@
 									/>
 								</div>
 
-								<div
-									class="flex justify-center p-4 w-[17%] items-center text-black border border-[#27293a]"
-								>
-									<div class="flex justify-evenly items-center w-1/2 rounded-md p-2 bg-green-300">
+								<div class="flex justify-center p-4 w-[14%] items-center text-black">
+									<div class="flex justify-evenly items-center w-1/1 rounded-md p-2 bg-green-300">
 										<svg
 											class="h-[1.3em]"
 											fill="currentColor"
@@ -282,37 +336,35 @@
 										.includes(pesquisa.toLowerCase()) || ramal.ramal
 										.toLowerCase()
 										.includes(pesquisa.toLowerCase())}
-									<div class="flex w-full">
+									<div class="flex w-full border border-[#27293a]">
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
 											>{ramal.org}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
 											>{ramal.unidade}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
 											>{ramal.setor}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
 											>{ramal.user}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
 											>{ramal.ramal}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
 											>{ramal.servico}</span
 										>
-										<span
-											class="border h-full flex border-[#27293a] justify-evenly items-center w-1/6 p-2"
-										>
+										<span class=" h-full flex ml-2 justify-evenly items-center w-[14%] p-3">
 											<button formaction="?/deleteRamais&id={ramal.id}&secret={expectedSecret}">
 												<svg
-													class="h-[1.2em] text-red-300"
+													class="h-[1.3em] text-red-300"
 													xmlns="http://www.w3.org/2000/svg"
 													fill="currentCOlor"
 													viewBox="0 0 448 512"
@@ -324,7 +376,7 @@
 
 											<button type="button" on:click={() => opne2(ramal)}>
 												<svg
-													class="h-[1.2em] text-blue-300"
+													class="h-[1.3em] text-blue-300"
 													xmlns="http://www.w3.org/2000/svg"
 													fill="currentCOlor"
 													viewBox="0 0 512 512"
@@ -338,31 +390,31 @@
 								{:else if !pesquisa}
 									<div class="flex border-[#27293a] w-full">
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
 											>{ramal.org}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
 											>{ramal.unidade}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
 											>{ramal.setor}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
 											>{ramal.user}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
 											>{ramal.ramal}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
 											>{ramal.servico}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-evenly items-center w-1/6 p-2"
+											class="border h-full flex border-[#27293a] justify-evenly items-center w-[14%] p-3"
 										>
 											<button formaction="?/deleteRamais&id={ramal.id}&secret={expectedSecret}">
 												<svg
