@@ -91,7 +91,7 @@
 								>{ramal.ramal}</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
+								class="border h-full flex border-[#27293a] justify-center items-center uppercase w-1/5 p-2"
 								>{ramal.servico}</span
 							>
 						</div>
@@ -118,7 +118,7 @@
 								>{ramal.ramal}</span
 							>
 							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
+								class="border h-full flex border-[#27293a] justify-center items-center uppercase w-1/5 p-2"
 								>{ramal.servico}</span
 							>
 						</div>

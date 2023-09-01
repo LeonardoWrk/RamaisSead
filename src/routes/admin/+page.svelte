@@ -240,6 +240,8 @@
 										name="setor"
 									>
 										<option value="" />
+										<option value="SGRH">SGRH</option>
+										<option value="DAF">DAF</option>
 										<option value="ASCOM">ASCOM</option>
 										<option value="CPSIAD">CPSIAD</option>
 										<option value="ALMOXARIFADO">ALMOXARIFADO</option>
@@ -360,7 +362,7 @@
 											>{ramal.ramal}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-center items-center w-[14%] p-3"
+											class="border h-full flex border-[#27293a] justify-center items-center uppercase w-[14%] p-3"
 											>{ramal.servico}</span
 										>
 										<span class=" h-full flex ml-2 justify-evenly items-center w-[14%] p-3">
@@ -416,7 +418,7 @@
 											>{ramal.servico}</span
 										>
 										<span
-											class="border h-full flex border-[#27293a] justify-evenly items-center w-[14%] p-3"
+											class="border h-full flex border-[#27293a] justify-evenly items-center uppercase w-[14%] p-3"
 										>
 											<button formaction="?/deleteRamais&id={ramal.id}&secret={expectedSecret}">
 												<svg
