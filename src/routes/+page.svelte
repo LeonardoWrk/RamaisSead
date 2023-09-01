@@ -66,6 +66,8 @@
 							.toLowerCase()
 							.includes(pesquisa.toLowerCase()) || ramal.ramal
 							.toLowerCase()
+							.includes(pesquisa.toLowerCase()) || ramal.servico
+							.toLowerCase()
 							.includes(pesquisa.toLowerCase())}
 						<div class="flex w-full">
 							<span
