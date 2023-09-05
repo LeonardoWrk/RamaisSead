@@ -1,130 +1,27 @@
 <script lang="ts">
+	import Head from '$lib/components/Head.svelte';
+	import Nav from '$lib/components/Nav.svelte';
+	import Pesquisa from '$lib/components/Pesquisa.svelte';
+
 	import type { PageData } from './$types';
 
-	export let data: PageData;
 	export let pesquisa = '';
-
+	export let data: PageData;
 	$: ({ ramais } = data);
 </script>
 
 <div class="w-full h-[10vh]">
-	<div class="flex justify-center">
-		<nav class=" bg-[#1a1c26] font-bold text-white p-3 drop-shadow-lg w-3/6 rounded-lg">
-			<div class="flex justify-center items-center">
-				<div class="text-4xl">Ramais</div>
-				<a
-					href="/login"
-					class="mr-auto bg-theme-soft p-4 m-2 w-[15%] hover:bg-theme-soft text-center flex justify-center rounded-md active:scale-90 duration-100"
-					>ADM</a
-				>
-				<input
-					class="bg-theme-soft rounded-lg w-1/2 h-[63px]"
-					placeholder="    e.g: buscar ramais"
-					type="text"
-					bind:value={pesquisa}
-				/>
-			</div>
-		</nav>
-	</div>
-
+	<Nav bind:pesquisa>
+		<a
+			href="/login"
+			class="mr-auto bg-theme-soft p-4 m-2 w-[15%] hover:bg-theme-soft text-center flex justify-center rounded-md active:scale-90 duration-100"
+			>ADM</a
+		></Nav
+	>
 	<div class=" drop-shadow-lg rounded-lg flex flex-col h-[90vh] mt-20 items-center text-white">
 		<div class="flex flex-col w-9/12 bg-theme-soft">
-			<div class="flex w-full">
-				<span
-					class="border border-[#27293a] h-full flex justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
-					>org</span
-				>
-				<span
-					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
-					>unidade</span
-				>
-				<span
-					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
-					>setor</span
-				>
-				<span
-					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
-					>user</span
-				>
-				<span
-					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
-					>ramal</span
-				>
-				<span
-					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
-					>servico</span
-				>
-			</div>
-
-			<div class="flex flex-col w-full bg-theme-base max-h-[600px] overflow-y-auto">
-				{#each ramais as ramal}
-					{#if ramal.org.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.unidade
-							.toLowerCase()
-							.includes(pesquisa.toLowerCase()) || ramal.setor
-							.toLowerCase()
-							.includes(pesquisa.toLowerCase()) || ramal.user
-							.toLowerCase()
-							.includes(pesquisa.toLowerCase()) || ramal.ramal
-							.toLowerCase()
-							.includes(pesquisa.toLowerCase()) || ramal.servico
-							.toLowerCase()
-							.includes(pesquisa.toLowerCase())}
-						<div class="flex w-full">
-							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
-								>{ramal.org}</span
-							>
-							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
-								>{ramal.unidade}</span
-							>
-							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
-								>{ramal.setor}</span
-							>
-							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
-								>{ramal.user}</span
-							>
-							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
-								>{ramal.ramal}</span
-							>
-							<span
-								class="border h-full flex border-[#27293a] justify-center items-center uppercase w-1/5 p-2"
-								>{ramal.servico}</span
-							>
-						</div>
-					{:else if !pesquisa}
-						<div class="flex border-[#27293a] w-full">
-							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
-								>{ramal.org}</span
-							>
-							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
-								>{ramal.unidade}</span
-							>
-							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
-								>{ramal.setor}</span
-							>
-							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
-								>{ramal.user}</span
-							>
-							<span
-								class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-2"
-								>{ramal.ramal}</span
-							>
-							<span
-								class="border h-full flex border-[#27293a] justify-center items-center uppercase w-1/5 p-2"
-								>{ramal.servico}</span
-							>
-						</div>
-					{/if}
-				{/each}
-			</div>
+			<Head width="w-1/5" />
+			<Pesquisa bind:data bind:pesquisa width="w-1/5" />
 		</div>
 	</div>
 </div>
