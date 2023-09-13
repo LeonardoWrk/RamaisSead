@@ -45,7 +45,7 @@
 					class=" h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a] text-2xl"
 					id="pass"
 					bind:value={senha}
-					type="text"
+					type="password"
 				/>
 			</div>
 			<button

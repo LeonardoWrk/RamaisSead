@@ -5,10 +5,13 @@
 	import Pesquisa from '$lib/components/Pesquisa.svelte';
 	import { onMount } from 'svelte';
 	import { slide, fly, fade } from 'svelte/transition';
+	import option from '$lib/option.json';
+	import jsonData from '$lib/teste';
 
 	let expectedSecret: any;
 	let auth = true;
 	let edit = true;
+	let opedit = true;
 	let ramalEdit: Ramal;
 
 	let authorized = false;
@@ -134,6 +137,68 @@
 			</div>
 		</div>
 	{/if}
+
+	{#if !opedit}
+		<div
+			transition:slide={{ axis: 'x' }}
+			class=" absolute right-0 transform translate-y-[15%] z-50 bg-[#1a1c26] drop-shadow-lg rounded-lg border border-[#27293a]"
+		>
+			<div class="flex w-full items-center rounded-md p-2">
+				<button
+					type="button"
+					on:click={() => {
+						opedit = true;
+					}}
+				>
+					<svg
+						class="text-white"
+						xmlns="http://www.w3.org/2000/svg"
+						height="1.5em"
+						fill="currentColor"
+						viewBox="0 0 384 512"
+						><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
+							d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+						/></svg
+					>
+				</button>
+				<div class="ml-10 text-white text-xl font-extrabold">Atualizar</div>
+			</div>
+			<div class="w-full flex justify-around bg-theme-base max-h-[600px] overflow-y-auto">
+				<div class="flex-col flex w-full h-full text-black items-center font-extrabold">
+					<span class="text-white p-2"> Unidade</span>
+					{#each option.unidade as unidade, index}
+						<div class="flex justify-center items-center p-4">
+							<input
+								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								type="text"
+								value={unidade}
+								name={unidade}
+							/>
+							<button class=" m-2" on:click={() => jsonData(index)}>
+								<svg
+									class="h-[1.2em] text-red-300"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentCOlor"
+									viewBox="0 0 448 512"
+									><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
+										d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
+									/></svg
+								>
+							</button>
+						</div>
+					{/each}
+				</div>
+			</div>
+			<div class=" flex items-center m-5 justify-evenly">
+				<div class="flex justify-evenly items-center rounded-md p-2 bg-green-300">
+					<button type="submit">Atualizar</button>
+				</div>
+				<div class="flex justify-evenly items-center rounded-md p-2 bg-blue-300">
+					<button type="submit">Adicionar</button>
+				</div>
+			</div>
+		</div>
+	{/if}
 	<Nav bind:pesquisa>
 		<a
 			href="/"
@@ -149,7 +214,7 @@
 				{/if}
 				<div class=" drop-shadow-lg rounded-lg flex flex-col h-[90vh] items-center text-white">
 					<div class="flex flex-col w-full bg-theme-soft">
-						<Head width="w-[14%]">
+						<Head bind:opedit width="w-[14%]">
 							<span
 								class="h-full flex justify-center items-center w-[14%] p-4 font-bold uppercase text-xl"
 							/>
@@ -170,16 +235,9 @@
 										name="unidade"
 									>
 										<option value="" />
-										<option value="SUPAT">SUPAT</option>
-										<option value="ASPOCT">ASPOCT</option>
-										<option value="NÚCLEO DE GESTÃO">NÚCLEO DE GESTÃO</option>
-										<option value="PERICIA">PERICIA</option>
-										<option value="CEAC-TURISTA">CEAC-TURISTA</option>
-										<option value="SGRH">SGRH</option>
-										<option value="GABINETE">GABINETE</option>
-										<option value="SGCC/COMPRAS">SGCC/COMPRAS</option>
-										<option value="DAF">DAF</option>
-										<option value="OUVIDORIA">OUVIDORIA</option>
+										{#each option.unidade as unidade}
+											<option>{unidade}</option>
+										{/each}
 									</select>
 								</div>
 
@@ -189,51 +247,9 @@
 										name="setor"
 									>
 										<option value="" />
-										<option value="SGRH">SGRH</option>
-										<option value="DAF">DAF</option>
-										<option value="ASCOM">ASCOM</option>
-										<option value="CPSIAD">CPSIAD</option>
-										<option value="ALMOXARIFADO">ALMOXARIFADO</option>
-										<option value="GERPS">GERPS</option>
-										<option value="GERFIN">GERFIN</option>
-										<option value="GERATA">GERATA</option>
-										<option value="SGCC">SGCC</option>
-										<option value="OUVIDORIA">OUVIDORIA</option>
-										<option value="PERICIA MEDICA">PERICIA MEDICA</option>
-										<option value="SETRANS">SETRANS</option>
-										<option value="DGSL">DGSL</option>
-										<option value="GERMACO">GERMACO</option>
-										<option value="GERSEP">GERSEP</option>
-										<option value="GERMASE">GERMASE</option>
-										<option value="GERAFOR">GERAFOR</option>
-										<option value="GABINETE">GABINETE</option>
-										<option value="RECEPÇÃO">RECEPÇÃO</option>
-										<option value="GECIF">GECIF</option>
-										<option value="CONCURSO">CONCURSO</option>
-										<option value="INDENIZACAO">INDENIZACAO</option>
-										<option value="GCSA">GCSA</option>
-										<option value="DGP">DGP</option>
-										<option value="GCDFF">GCDFF</option>
-										<option value="INCORPORAÇÃO">INCORPORAÇÃO</option>
-										<option value="GELOT">GELOT</option>
-										<option value="ASPOCT">ASPOCT</option>
-										<option value="DGPI">DGPI</option>
-										<option value="SUPAT">SUPAT</option>
-										<option value="DGPM">DGPM</option>
-										<option value="GEMOVE">GEMOVE</option>
-										<option value="DGP">DGP</option>
-										<option value="CONTABILIDADE">CONTABILIDADE</option>
-										<option value="NÚCLEO">NÚCLEO</option>
-										<option value="GUARITA">GUARITA</option>
-										<option value="SERVICO SOCIAL">SERVICO SOCIAL</option>
-										<option value="SECLOG">SECLOG</option>
-										<option value="DTIN">DTIN</option>
-										<option value="ADESP">ADESP</option>
-										<option value="DTI-TURISTA">DTI-TURISTA</option>
-										<option value="ACUMULO DE CARGOS">ACUMULO DE CARGOS</option>
-										<option value="PROTOCOLO">PROTOCOLO</option>
-										<option value="ESCOLA">ESCOLA</option>
-										<option value="GCLOG">GCLOG</option>
+										{#each option.setor as setor}
+											<option>{setor}</option>
+										{/each}
 									</select>
 								</div>
 								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">

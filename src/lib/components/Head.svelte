@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let width = '';
-
+	export let opedit;
 	$: w = width;
 </script>
 
@@ -9,10 +9,17 @@
 		class="border border-[#27293a] h-full flex justify-center items-center {w} p-4 font-bold uppercase text-xl"
 		>org</span
 	>
-	<span
+
+	<button
+		type="button"
+		on:click={() => {
+			opedit = false;
+		}}
 		class="border h-full flex border-[#27293a] justify-center items-center {w} p-4 font-bold uppercase text-xl"
-		>unidade</span
 	>
+		unidade
+	</button>
+
 	<span
 		class="border h-full flex border-[#27293a] justify-center items-center {w} p-4 font-bold uppercase text-xl"
 		>setor</span
