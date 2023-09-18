@@ -5,13 +5,49 @@
 	import Pesquisa from '$lib/components/Pesquisa.svelte';
 	import { onMount } from 'svelte';
 	import { slide, fly, fade } from 'svelte/transition';
-	import option from '$lib/option.json';
-	import jsonData from '$lib/teste';
+	import option from '../../option.json';
+
+	// Seu código Svelte
+
+	// on:click={() => deleteUnidade(index)}
+
+	// interface Entry {
+	// 	index: number;
+	// 	// Add other properties as needed
+	// }
+
+	// let jsonData: Entry[] = [];
+
+	// async function readJSONFile() {
+	// 	console.log('batpoirraata');
+	// 	const response = await fetch('option.json');
+	// 	jsonData = await response.json();
+	// }
+
+	// async function deleteUnidade(index: number) {
+	// 	option.unidade.splice(index, 1); // Remove the entry at the specified index
+	// 	await saveData();
+	// }
+
+	// async function saveData() {
+	// 	const jsonString = JSON.stringify(jsonData, null, 2);
+	// 	const response = await fetch('option.json', {
+	// 		method: 'PUT',
+	// 		body: jsonString,
+	// 		headers: {
+	// 			'Content-Type': 'application/json'
+	// 		}
+	// 	});
+	// }
+
+	// onMount(() => {
+	// 	readJSONFile();
+	// });
 
 	let expectedSecret: any;
 	let auth = true;
-	let edit = true;
-	let opedit = true;
+	let edit: boolean = false;
+	let opedit: boolean = false;
 	let ramalEdit: Ramal;
 
 	let authorized = false;
@@ -39,7 +75,7 @@
 </script>
 
 {#if authorized}
-	{#if !edit}
+	{#if edit}
 		<div
 			transition:slide={{ axis: 'x' }}
 			class=" absolute right-0 transform translate-y-[15%] z-50 bg-[#1a1c26] drop-shadow-lg rounded-lg border border-[#27293a]"
@@ -48,7 +84,7 @@
 				<button
 					type="button"
 					on:click={() => {
-						edit = true;
+						edit = false;
 					}}
 				>
 					<svg
@@ -138,7 +174,7 @@
 		</div>
 	{/if}
 
-	{#if !opedit}
+	{#if opedit}
 		<div
 			transition:slide={{ axis: 'x' }}
 			class=" absolute right-0 transform translate-y-[15%] z-50 bg-[#1a1c26] drop-shadow-lg rounded-lg border border-[#27293a]"
@@ -163,38 +199,41 @@
 				</button>
 				<div class="ml-10 text-white text-xl font-extrabold">Atualizar</div>
 			</div>
+
 			<div class="w-full flex justify-around bg-theme-base max-h-[600px] overflow-y-auto">
 				<div class="flex-col flex w-full h-full text-black items-center font-extrabold">
 					<span class="text-white p-2"> Unidade</span>
-					{#each option.unidade as unidade, index}
-						<div class="flex justify-center items-center p-4">
-							<input
-								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
-								type="text"
-								value={unidade}
-								name={unidade}
-							/>
-							<button class=" m-2" on:click={() => jsonData(index)}>
-								<svg
-									class="h-[1.2em] text-red-300"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="currentCOlor"
-									viewBox="0 0 448 512"
-									><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
-										d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
-									/></svg
-								>
-							</button>
-						</div>
+					{#each option.unidade as unidades, index}
+						<form action="?/getChamadasUnidade={index}&secret={expectedSecret}" method="POST">
+							<div class="flex justify-center items-center p-4">
+								<input
+									class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+									type="text"
+									value={unidades}
+									name={unidades}
+								/>
+								<button class=" m-2" type="submit">
+									<svg
+										class="h-[1.2em] text-red-300"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="currentCOlor"
+										viewBox="0 0 448 512"
+										><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
+											d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
+										/></svg
+									>
+								</button>
+							</div>
+						</form>
 					{/each}
 				</div>
 			</div>
 			<div class=" flex items-center m-5 justify-evenly">
 				<div class="flex justify-evenly items-center rounded-md p-2 bg-green-300">
-					<button type="submit">Atualizar</button>
+					<button> Atualizar</button>
 				</div>
 				<div class="flex justify-evenly items-center rounded-md p-2 bg-blue-300">
-					<button type="submit">Adicionar</button>
+					<button>Adicionar</button>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let width = '';
-	export let opedit;
+	export let opedit: boolean;
 	$: w = width;
 </script>
 
@@ -13,7 +13,7 @@
 	<button
 		type="button"
 		on:click={() => {
-			opedit = false;
+			opedit = true;
 		}}
 		class="border h-full flex border-[#27293a] justify-center items-center {w} p-4 font-bold uppercase text-xl"
 	>

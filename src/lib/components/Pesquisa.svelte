@@ -10,7 +10,7 @@
 	export let ramalEdit: Ramal | undefined = undefined;
 
 	function opne2(ramal: Ramal) {
-		edit = false;
+		edit = true;
 		ramalEdit = ramal;
 		console.log(ramalEdit);
 	}
