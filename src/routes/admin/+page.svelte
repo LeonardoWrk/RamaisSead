@@ -5,44 +5,7 @@
 	import Pesquisa from '$lib/components/Pesquisa.svelte';
 	import { onMount } from 'svelte';
 	import { slide, fly, fade } from 'svelte/transition';
-	import option from '../../option.json';
-
-	// Seu código Svelte
-
-	// on:click={() => deleteUnidade(index)}
-
-	// interface Entry {
-	// 	index: number;
-	// 	// Add other properties as needed
-	// }
-
-	// let jsonData: Entry[] = [];
-
-	// async function readJSONFile() {
-	// 	console.log('batpoirraata');
-	// 	const response = await fetch('option.json');
-	// 	jsonData = await response.json();
-	// }
-
-	// async function deleteUnidade(index: number) {
-	// 	option.unidade.splice(index, 1); // Remove the entry at the specified index
-	// 	await saveData();
-	// }
-
-	// async function saveData() {
-	// 	const jsonString = JSON.stringify(jsonData, null, 2);
-	// 	const response = await fetch('option.json', {
-	// 		method: 'PUT',
-	// 		body: jsonString,
-	// 		headers: {
-	// 			'Content-Type': 'application/json'
-	// 		}
-	// 	});
-	// }
-
-	// onMount(() => {
-	// 	readJSONFile();
-	// });
+	import option from '../../lib/option.json';
 
 	let expectedSecret: any;
 	let auth = true;
@@ -204,7 +167,7 @@
 				<div class="flex-col flex w-full h-full text-black items-center font-extrabold">
 					<span class="text-white p-2"> Unidade</span>
 					{#each option.unidade as unidades, index}
-						<form action="?/getChamadasUnidade={index}&secret={expectedSecret}" method="POST">
+						<form action="?/getChamadasUnidade&index={index}&secret={expectedSecret}" method="POST">
 							<div class="flex justify-center items-center p-4">
 								<input
 									class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"

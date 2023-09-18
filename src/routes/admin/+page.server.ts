@@ -1,5 +1,6 @@
 import type { Actions, PageServerLoad } from './$types';
 
+import fs from 'fs';
 import { db } from '$lib/db/';
 import { fail } from '@sveltejs/kit';
 
@@ -71,54 +72,45 @@ export const actions: Actions = {
 			// console.log('ERROR', error);
 		}
 	},
-	getChamadasUnidade: async ({ url }) => {
-		console.log('caraiiiiiiiiiiii');
-		const index = url.searchParams.get('index');
-		console.log('caraiiiiiiiiiiii');
+	getChamadasUnidade: async (event) => {
+		const index = event.url.searchParams.get('index');
 
 		try {
-			console.log('caraiiiiiiiiiiii');
 			// Ler os dados do arquivo option.json
-			const response = await fetch('option.json'); // Certifique-se de que o arquivo option.json está no mesmo diretório
+			const response = await event.fetch('src/lib/option.json'); // Certifique-se de que o arquivo option.json está no mesmo diretório
+
 			let options = await response.json();
 
 			// Verifica se o index foi passado como parâmetro na URL
 			if (!index) return fail(400, { message: 'Parâmetro inválido ' });
 
 			// Encontra a unidade correspondente ao index no arquivo option.json
-			const unidade = options[index];
-
+			const unidade = options.unidade[index];
+			console.log(unidade);
 			if (!unidade) {
 				return fail(404, { message: 'Unidade não encontrada' });
 			}
-			console.log('caraiiiiiiiiiiii');
 
 			// Deleta a unidade do array options
-			options = options.filter(
-				(item: { id: number; nome: string }, i: any) => i !== parseInt(index as string)
+			console.log(options);
+			options.unidade = options.unidade.filter(
+				(item: { id: number; nome: string }, i: any) => i !== parseInt(index)
 			);
 
-			// Salva as alterações no arquivo option.json
-			// Nota: Esta parte depende da sua configuração específica para salvar o arquivo
-			// Pode ser necessário usar um módulo Node.js ou alguma outra técnica para escrever no sistema de arquivos.
-			// Se precisar de ajuda com isso, me avise.
-			// Por enquanto, vamos assumir que você tem um método `saveToFile` que pode ser usado.
-			await saveToFile('option.json', JSON.stringify(options));
-			console.log('caraiiiiiiiiiiii');
+			let optionsc = JSON.stringify(options);
+
+			fs.writeFile('src/lib/option.json', optionsc, (err) => {
+				if (err) {
+					console.log('Error writing file:', err);
+				} else {
+					console.log('Successfully wrote file');
+				}
+			});
 
 			return unidade.chamadas; // Retorna a lista de chamadas da unidade
 		} catch (error) {
-			console.log('caraiiiiiiiiiiii');
-
 			console.log(error);
 			return fail(500, { message: 'Erro interno do servidor' });
 		}
 	}
 };
-function saveToFile(filename: string, content: string): void {
-	const blob = new Blob([content], { type: 'text/plain' });
-	const link = document.createElement('a');
-	link.href = window.URL.createObjectURL(blob);
-	link.download = filename;
-	link.click();
-}
