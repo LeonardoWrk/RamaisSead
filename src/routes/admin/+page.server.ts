@@ -77,7 +77,7 @@ export const actions: Actions = {
 
 		try {
 			// Ler os dados do arquivo option.json
-			const response = await event.fetch('src/lib/option.json'); // Certifique-se de que o arquivo option.json está no mesmo diretório
+			const response = await event.fetch('./option.json'); // Certifique-se de que o arquivo option.json está no mesmo diretório
 
 			let options = await response.json();
 
@@ -99,7 +99,7 @@ export const actions: Actions = {
 
 			let optionsc = JSON.stringify(options);
 
-			fs.writeFile('src/lib/option.json', optionsc, (err) => {
+			fs.writeFile('./option.json', optionsc, (err) => {
 				if (err) {
 					console.log('Error writing file:', err);
 				} else {
