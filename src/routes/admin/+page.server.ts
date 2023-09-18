@@ -77,7 +77,7 @@ export const actions: Actions = {
 
 		try {
 			// Ler os dados do arquivo option.json
-			const response = await event.fetch('./option.json'); // Certifique-se de que o arquivo option.json está no mesmo diretório
+			const response = await event.fetch('src/routes/option.json'); // Certifique-se de que o arquivo option.json está no mesmo diretório
 
 			let options = await response.json();
 
@@ -86,28 +86,25 @@ export const actions: Actions = {
 
 			// Encontra a unidade correspondente ao index no arquivo option.json
 			const unidade = options.unidade[index];
-			console.log(unidade);
 			if (!unidade) {
 				return fail(404, { message: 'Unidade não encontrada' });
 			}
 
 			// Deleta a unidade do array options
-			console.log(options);
+
 			options.unidade = options.unidade.filter(
 				(item: { id: number; nome: string }, i: any) => i !== parseInt(index)
 			);
 
 			let optionsc = JSON.stringify(options);
 
-			fs.writeFile('./option.json', optionsc, (err) => {
+			fs.writeFile('src/routes/option.json', optionsc, (err) => {
 				if (err) {
 					console.log('Error writing file:', err);
 				} else {
 					console.log('Successfully wrote file');
 				}
 			});
-
-			return unidade.chamadas; // Retorna a lista de chamadas da unidade
 		} catch (error) {
 			console.log(error);
 			return fail(500, { message: 'Erro interno do servidor' });
