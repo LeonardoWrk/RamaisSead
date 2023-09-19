@@ -5,7 +5,7 @@
 	import Pesquisa from '$lib/components/Pesquisa.svelte';
 	import { onMount } from 'svelte';
 	import { slide, fly, fade } from 'svelte/transition';
-	import option from '../../routes/option.json';
+	import option from '../../option.json';
 
 	let expectedSecret: any;
 	let auth = true;
