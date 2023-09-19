@@ -5,7 +5,6 @@
 	import Pesquisa from '$lib/components/Pesquisa.svelte';
 	import { onMount } from 'svelte';
 	import { slide, fly, fade } from 'svelte/transition';
-	import option from '../../option.json';
 
 	let expectedSecret: any;
 	let auth = true;
@@ -166,7 +165,7 @@
 			<div class="w-full flex justify-around bg-theme-base max-h-[600px] overflow-y-auto">
 				<div class="flex-col flex w-full h-full text-black items-center font-extrabold">
 					<span class="text-white p-2"> Unidade</span>
-					{#each option.unidade as unidades, index}
+					{#each data.options.unidade as unidades, index}
 						<form action="?/getChamadasUnidade&index={index}&secret={expectedSecret}" method="POST">
 							<div class="flex justify-center items-center p-4">
 								<input
@@ -237,7 +236,7 @@
 										name="unidade"
 									>
 										<option value="" />
-										{#each option.unidade as unidade}
+										{#each data.options.unidade as unidade}
 											<option>{unidade}</option>
 										{/each}
 									</select>
@@ -249,7 +248,7 @@
 										name="setor"
 									>
 										<option value="" />
-										{#each option.setor as setor}
+										{#each data.options.setor as setor}
 											<option>{setor}</option>
 										{/each}
 									</select>

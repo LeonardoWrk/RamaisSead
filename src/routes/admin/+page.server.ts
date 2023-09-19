@@ -1,11 +1,47 @@
 import type { Actions, PageServerLoad } from './$types';
 
-import fs from 'fs';
+import fs from 'fs/promises';
 import { db } from '$lib/db/';
 import { fail } from '@sveltejs/kit';
 
+function stripDir(path: string, endline: string) {
+	let pathArray = path.split('/');
+
+	let correctArray = [];
+	for (path of pathArray) {
+		if (path == '') continue;
+		correctArray.push(path);
+		if (path == endline) {
+			let correctDir = correctArray.join('/');
+			return correctDir;
+		}
+	}
+	let correctDir = correctArray.join('/');
+	return correctDir;
+}
+
+async function getOptions(path: string) {
+	return JSON.parse(await fs.readFile(path, 'utf-8'));
+}
+
+async function writeOptions(path: string, content: any) {
+	await fs
+		.writeFile(path, content, 'utf-8')
+		.then(() => {
+			console.log('Success writing file');
+		})
+		.catch((err) => {
+			console.log('Failed writing file ', err);
+		});
+}
+
 export const load: PageServerLoad = async () => {
+	let currPath = new URL(import.meta.url).pathname;
+	let correctPath = stripDir(currPath, 'ramais') + '/option.json';
+	let options = await getOptions(correctPath);
+	console.log(options);
 	return {
+		options,
 		ramais: await db.selectFrom('Ramais').selectAll().execute()
 	};
 };
@@ -76,35 +112,23 @@ export const actions: Actions = {
 		const index = event.url.searchParams.get('index');
 
 		try {
-			// Ler os dados do arquivo option.json
-			const response = await event.fetch('src/option.json'); // Certifique-se de que o arquivo option.json está no mesmo diretório
-
-			let options = await response.json();
+			let currPath = new URL(import.meta.url).pathname;
+			let correctPath = stripDir(currPath, 'ramais') + '/option.json';
+			let options = await getOptions(correctPath);
 
 			// Verifica se o index foi passado como parâmetro na URL
 			if (!index) return fail(400, { message: 'Parâmetro inválido ' });
 
-			// Encontra a unidade correspondente ao index no arquivo option.json
 			const unidade = options.unidade[index];
 			if (!unidade) {
 				return fail(404, { message: 'Unidade não encontrada' });
 			}
-
-			// Deleta a unidade do array options
-
 			options.unidade = options.unidade.filter(
 				(item: { id: number; nome: string }, i: any) => i !== parseInt(index)
 			);
 
 			let optionsc = JSON.stringify(options, null, 4);
-
-			fs.writeFile('src/option.json', optionsc, (err) => {
-				if (err) {
-					console.log('Error writing file:', err);
-				} else {
-					console.log('Successfully wrote file');
-				}
-			});
+			await writeOptions(correctPath, optionsc);
 		} catch (error) {
 			console.log(error);
 			return fail(500, { message: 'Erro interno do servidor' });
