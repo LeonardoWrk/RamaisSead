@@ -5,8 +5,8 @@
 	"private": true,
 	"scripts": {
 		"db:push": "prisma db push && node ./prisma/generate.cjs",
-		"build": "prisma generate && vite build",
-		"start": "pnpm start",
+		"build": "prisma generate && npm install && npm run build",
+		"start":"node build/index.js",
 		"postinstall": "prisma generate",
 		"dev": "vite dev",
 		"preview": "vite preview",
