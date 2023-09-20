@@ -3,6 +3,9 @@
 	"name": "ramais",
 	"version": "0.0.1",
 	"private": true,
+	"engines": {
+		"node": ">=16"
+	  },
 	"scripts": {
 		"start": "svelte-kit start",
 		"db:push": "prisma db push && node ./prisma/generate.cjs",
