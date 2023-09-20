@@ -2,13 +2,13 @@
 	"type": "module",
 	"name": "ramais",
 	"version": "0.0.1",
-	"start": "npm start",
 	"private": true,
 	"engines":{
 		"node": "20"
 	},
 	"scripts": {
 		"db:push": "prisma db push && node ./prisma/generate.cjs",
+		"start": "npm start",
 		"build": "prisma generate && vite build",
 		"postinstall": "prisma generate",
 		"dev": "vite dev",
