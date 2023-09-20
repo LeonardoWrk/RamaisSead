@@ -2,6 +2,7 @@
 	"type": "module",
 	"name": "ramais",
 	"version": "0.0.1",
+	"start": "npm start",
 	"private": true,
 	"engines":{
 		"node": "20"
