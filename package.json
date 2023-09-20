@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"db:push": "prisma db push && node ./prisma/generate.cjs",
-		"start": "npm start",
+		"start": "node build/index.js",
 		"build": "prisma generate && vite build",
 		"postinstall": "prisma generate",
 		"dev": "vite dev",
