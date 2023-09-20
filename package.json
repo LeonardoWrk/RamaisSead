@@ -7,6 +7,7 @@
 		"node": ">=16"
 	  },
 	"scripts": {
+		"serve": "vite serve --host seadramais.onrender.com",
 		"start": "svelte-kit start",
 		"db:push": "prisma db push && node ./prisma/generate.cjs",
 		"build": "prisma generate && vite build",
