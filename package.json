@@ -8,7 +8,7 @@
 	  },
 	"scripts": {
 		"db:push": "prisma db push && node ./prisma/generate.cjs",
-		"build": "svelte-kit build",
+		"build": "npm install && prisma generate && vite build",
 		"postinstall": "prisma generate",
 		"dev": "vite dev",
 		"preview": "vite preview",
