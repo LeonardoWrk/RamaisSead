@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: svelte-service
+    buildCommand: npm install && prisma generate && vite build
+    envVars:
+      - key: NODE_ENV
+        value: production
