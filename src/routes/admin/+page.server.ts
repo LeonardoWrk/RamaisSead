@@ -43,7 +43,8 @@ export const load: PageServerLoad = async () => {
 	if (dev) {
 		folder = 'build';
 	}
-	let correctPath = stripDir(currPath, folder) + '/option.json';
+	// let correctPath = stripDir(currPath, folder) + '/option.json';
+	let correctPath = 'opt/render/project/src/build/option.json';
 	console.log(`PATH NO SERVER.TS: ${correctPath}`);
 	let options = await getOptions(correctPath);
 
@@ -124,7 +125,8 @@ export const actions: Actions = {
 			if (dev) {
 				folder = 'build';
 			}
-			let correctPath = stripDir(currPath, folder) + '/option.json';
+			// let correctPath = stripDir(currPath, folder) + '/option.json';
+			let correctPath = 'opt/render/project/src/build/option.json';
 			console.log(`PATH NO SERVER.TS: ${correctPath}`);
 			let options = await getOptions(correctPath);
 
