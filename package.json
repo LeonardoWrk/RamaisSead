@@ -9,7 +9,7 @@
 	"scripts": {
 		"db:push": "prisma db push && node ./prisma/generate.cjs",
 		"build": "npm install && prisma generate && vite build",
-		"postinstall": "prisma generate",
+		"postinstall": "prisma generate && node initOption.cjs",
 		"dev": "vite dev",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
