@@ -3,6 +3,7 @@ import type { Actions, PageServerLoad } from './$types';
 import { promises as fs } from 'fs';
 import { db } from '$lib/db/';
 import { fail } from '@sveltejs/kit';
+import { dev } from '$app/environment';
 
 function stripDir(path: string, endline: string) {
 	let pathArray = path.split('/');
@@ -37,7 +38,11 @@ async function writeOptions(path: string, content: any) {
 
 export const load: PageServerLoad = async () => {
 	let currPath = new URL(import.meta.url).pathname;
-	let correctPath = stripDir(currPath, 'ramais') + '/option.json';
+	let folder = 'ramais';
+	if (dev) {
+		folder = 'build';
+	}
+	let correctPath = stripDir(currPath, folder) + '/option.json';
 	console.log(correctPath);
 	let options = await getOptions(correctPath);
 	console.log(options);
@@ -114,7 +119,11 @@ export const actions: Actions = {
 
 		try {
 			let currPath = new URL(import.meta.url).pathname;
-			let correctPath = stripDir(currPath, 'ramais') + '/option.json';
+			let folder = 'ramais';
+			if (dev) {
+				folder = 'build';
+			}
+			let correctPath = stripDir(currPath, folder) + '/option.json';
 			let options = await getOptions(correctPath);
 
 			// Verifica se o index foi passado como parâmetro na URL
