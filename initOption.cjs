@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-// INIT OPTION
-
 const dataToWrite = {
 	setor: [
 		'',
@@ -79,6 +77,6 @@ fs.writeFile(filePath, jsonData, 'utf8', (err) => {
 	if (err) {
 		console.error('Error writing JSON file:', err);
 	} else {
-		console.log('JSON file written successfully!');
+		console.log(`JSON file written successfully! ${filePath}`);
 	}
 });

@@ -14,10 +14,12 @@ function stripDir(path: string, endline: string) {
 		correctArray.push(path);
 		if (path == endline) {
 			let correctDir = correctArray.join('/');
+			console.log(correctDir);
 			return correctDir;
 		}
 	}
 	let correctDir = correctArray.join('/');
+	console.log(correctDir);
 	return correctDir;
 }
 
