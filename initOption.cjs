@@ -67,7 +67,7 @@ const dataToWrite = {
 	]
 };
 
-const directoryPath = './';
+const directoryPath = 'build/';
 const fileName = 'option.json';
 
 const filePath = path.join(directoryPath, fileName);
@@ -77,6 +77,6 @@ fs.writeFile(filePath, jsonData, 'utf8', (err) => {
 	if (err) {
 		console.error('Error writing JSON file:', err);
 	} else {
-		console.log(`JSON file written successfully! ${filePath}`);
+		console.log(`JSON file written successfully! PATH=${filePath}`);
 	}
 });

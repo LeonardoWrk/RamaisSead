@@ -14,12 +14,11 @@ function stripDir(path: string, endline: string) {
 		correctArray.push(path);
 		if (path == endline) {
 			let correctDir = correctArray.join('/');
-			console.log(correctDir);
 			return correctDir;
 		}
 	}
 	let correctDir = correctArray.join('/');
-	console.log(correctDir);
+
 	return correctDir;
 }
 
@@ -45,9 +44,9 @@ export const load: PageServerLoad = async () => {
 		folder = 'build';
 	}
 	let correctPath = stripDir(currPath, folder) + '/option.json';
-	console.log(correctPath);
+	console.log(`PATH NO SERVER.TS: ${correctPath}`);
 	let options = await getOptions(correctPath);
-	console.log(options);
+
 	return {
 		options,
 		ramais: await db.selectFrom('Ramais').selectAll().execute()
@@ -126,6 +125,7 @@ export const actions: Actions = {
 				folder = 'build';
 			}
 			let correctPath = stripDir(currPath, folder) + '/option.json';
+			console.log(`PATH NO SERVER.TS: ${correctPath}`);
 			let options = await getOptions(correctPath);
 
 			// Verifica se o index foi passado como parâmetro na URL
