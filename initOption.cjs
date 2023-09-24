@@ -72,6 +72,7 @@ const fileName = 'option.json';
 
 const filePath = path.join(directoryPath, fileName);
 const jsonData = JSON.stringify(dataToWrite, null, 2);
+console.log(process.cwd());
 
 fs.writeFile(filePath, jsonData, 'utf8', (err) => {
 	if (err) {
