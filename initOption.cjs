@@ -73,8 +73,6 @@ const fileName = 'option.json';
 const filePath = path.join(directoryPath, fileName);
 const jsonData = JSON.stringify(dataToWrite, null, 2);
 
-console.log('test: ', new URL(import.meta.url).pathname);
-
 fs.writeFile(filePath, jsonData, 'utf8', (err) => {
 	if (err) {
 		console.error('Error writing JSON file:', err);
