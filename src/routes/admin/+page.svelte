@@ -291,9 +291,8 @@
 								<input
 									class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
 									type="text"
-									value=""
+									value={setor}
 									name="input"
-									placeholder={setor}
 								/>
 								<button class=" m-2" type="submit">
 									<svg
