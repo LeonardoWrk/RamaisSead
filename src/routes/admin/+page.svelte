@@ -10,6 +10,7 @@
 	let auth = true;
 	let edit: boolean = false;
 	let opedit: boolean = false;
+	let opedit2: boolean = false;
 	let ramalEdit: Ramal;
 
 	let authorized = false;
@@ -165,6 +166,30 @@
 			<div class="w-full flex justify-around bg-theme-base max-h-[600px] overflow-y-auto">
 				<div class="flex-col flex w-full h-full text-black items-center font-extrabold">
 					<span class="text-white p-2"> Unidade</span>
+					<div class="">
+						<form
+							action="?/getaddUnidade&secret={expectedSecret}"
+							method="POST"
+							class="flex justify-center items-center p-4"
+						>
+							<input
+								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								type="text"
+								name="input"
+							/>
+							<button class=" bg-green-300 rounded-md m-4 p-1" type="submit">
+								<svg
+									class="h-[1.3em]"
+									fill="currentColor"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 448 512"
+									><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
+										d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+									/></svg
+								>
+							</button>
+						</form>
+					</div>
 					{#each data.options.unidade as unidades, index}
 						<form action="?/getChamadasUnidade&index={index}&secret={expectedSecret}" method="POST">
 							<div class="flex justify-center items-center p-4">
@@ -188,7 +213,7 @@
 								</button>
 								<button
 									type="submit"
-									formaction="?/getalterarUnidade&index={index}&unidade={unidades}&secret={expectedSecret}"
+									formaction="?/getalterarUnidade&index={index}&secret={expectedSecret}"
 								>
 									<svg
 										class="h-[1.2em] text-blue-300"
@@ -201,14 +226,100 @@
 									>
 								</button>
 							</div>
-							<div class=" flex items-center m-5 justify-evenly">
-								<div class="flex justify-evenly items-center rounded-md p-2 bg-blue-300">
-									<button
-										type="submit"
-										formaction="?/getaddUnidade&index={index}&unidade={unidades}&secret={expectedSecret}"
-										>Adicionar</button
+						</form>
+					{/each}
+				</div>
+			</div>
+		</div>
+	{/if}
+	{#if opedit2}
+		<div
+			transition:slide={{ axis: 'x' }}
+			class=" absolute right-0 transform translate-y-[15%] z-50 bg-[#1a1c26] drop-shadow-lg rounded-lg border border-[#27293a]"
+		>
+			<div class="flex w-full items-center rounded-md p-2">
+				<button
+					type="button"
+					on:click={() => {
+						opedit2 = false;
+					}}
+				>
+					<svg
+						class="text-white"
+						xmlns="http://www.w3.org/2000/svg"
+						height="1.5em"
+						fill="currentColor"
+						viewBox="0 0 384 512"
+						><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
+							d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+						/></svg
+					>
+				</button>
+				<div class="ml-10 text-white text-xl font-extrabold">Atualizar</div>
+			</div>
+
+			<div class="w-full flex justify-around bg-theme-base max-h-[600px] overflow-y-auto">
+				<div class="flex-col flex w-full h-full text-black items-center font-extrabold">
+					<span class="text-white p-2"> setor</span>
+					<div class="">
+						<form
+							action="?/getaddsetor&secret={expectedSecret}"
+							method="POST"
+							class="flex justify-center items-center p-4"
+						>
+							<input
+								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								type="text"
+								name="input"
+							/>
+							<button class=" bg-green-300 rounded-md m-4 p-1" type="submit">
+								<svg
+									class="h-[1.3em]"
+									fill="currentColor"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 448 512"
+									><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
+										d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+									/></svg
+								>
+							</button>
+						</form>
+					</div>
+					{#each data.options.setor as setor, index}
+						<form action="?/getChamadasSetor&index={index}&secret={expectedSecret}" method="POST">
+							<div class="flex justify-center items-center p-4">
+								<input
+									class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+									type="text"
+									value=""
+									name="input"
+									placeholder={setor}
+								/>
+								<button class=" m-2" type="submit">
+									<svg
+										class="h-[1.2em] text-red-300"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="currentCOlor"
+										viewBox="0 0 448 512"
+										><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
+											d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
+										/></svg
 									>
-								</div>
+								</button>
+								<button
+									type="submit"
+									formaction="?/getalterarSetor&index={index}&secret={expectedSecret}"
+								>
+									<svg
+										class="h-[1.2em] text-blue-300"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="currentCOlor"
+										viewBox="0 0 512 512"
+										><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path
+											d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"
+										/></svg
+									>
+								</button>
 							</div>
 						</form>
 					{/each}
@@ -231,7 +342,7 @@
 				{/if}
 				<div class=" drop-shadow-lg rounded-lg flex flex-col h-[90vh] items-center text-white">
 					<div class="flex flex-col w-full bg-theme-soft">
-						<Head bind:opedit width="w-[14%]">
+						<Head bind:opedit bind:opedit2 width="w-[14%]">
 							<span
 								class="h-full flex justify-center items-center w-[14%] p-4 font-bold uppercase text-xl"
 							/>

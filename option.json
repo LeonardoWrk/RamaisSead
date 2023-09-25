@@ -1,10 +1,6 @@
 {
     "setor": [
-        "",
-        "SGRH",
-        "DAF",
-        "ASCOM",
-        "CPSIAD",
+        "porraaa",
         "ALMOXARIFADO",
         "GERPS",
         "GERFIN",
@@ -45,10 +41,11 @@
         "ACUMULO DE CARGOS",
         "PROTOCOLO",
         "ESCOLA",
-        "GCLOG"
+        "GCLOG",
+        "aaaaaaaaaaaaaa"
     ],
     "unidade": [
-        "GUARITA",
+        "guarita",
         "SERVICO SOCIAL",
         "SECLOG",
         "DTIN",
@@ -57,6 +54,7 @@
         "ACUMULO DE CARGOS",
         "PROTOCOLO",
         "ESCOLA",
-        "GCLOG"
+        "GCLOG",
+        "aaaaaaaaa"
     ]
 }

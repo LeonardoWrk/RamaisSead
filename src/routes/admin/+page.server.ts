@@ -190,7 +190,32 @@ export const actions: Actions = {
 		const index = event.url.searchParams.get('index');
 
 		const unidadenew = (await event.request.formData()).get('input');
-		console.log(unidadenew);
+
+		try {
+			let currPath = new URL(import.meta.url).pathname;
+			let folder = 'build';
+			let correctPath = '/opt/render/project/src/build/option.json';
+			if (dev) {
+				folder = 'ramais';
+				correctPath = stripDir(currPath, folder) + '/option.json';
+			}
+
+			console.log(`PATH NO SERVER.TS: ${correctPath}`);
+			let options = await getOptions(correctPath);
+
+			options.unidade.push(unidadenew);
+
+			console.log(options.unidade);
+			let optionsc = JSON.stringify(options, null, 4);
+			await writeOptions(correctPath, optionsc);
+		} catch (error) {
+			console.log(error);
+			return fail(500, { message: 'Erro interno do servidor' });
+		}
+	},
+	getChamadasSetor: async (event) => {
+		const index = event.url.searchParams.get('index');
+
 		try {
 			let currPath = new URL(import.meta.url).pathname;
 			let folder = 'build';
@@ -206,11 +231,73 @@ export const actions: Actions = {
 			// Verifica se o index foi passado como parâmetro na URL
 			if (!index) return fail(400, { message: 'Parâmetro inválido ' });
 
-			const unidade = options.unidade[index];
+			const unidade = options.setor[index];
 			if (!unidade) {
 				return fail(404, { message: 'Unidade não encontrada' });
 			}
-			options.unidade.push(unidadenew);
+			options.setor = options.setor.filter(
+				(item: { id: number; nome: string }, i: any) => i !== parseInt(index)
+			);
+
+			let optionsc = JSON.stringify(options, null, 4);
+			await writeOptions(correctPath, optionsc);
+		} catch (error) {
+			console.log(error);
+			return fail(500, { message: 'Erro interno do servidor' });
+		}
+	},
+
+	getalterarSetor: async (event) => {
+		const index = event.url.searchParams.get('index');
+
+		const setorenew = (await event.request.formData()).get('input');
+
+		try {
+			let currPath = new URL(import.meta.url).pathname;
+			let folder = 'build';
+			let correctPath = '/opt/render/project/src/build/option.json';
+			if (dev) {
+				folder = 'ramais';
+				correctPath = stripDir(currPath, folder) + '/option.json';
+			}
+
+			console.log(`PATH NO SERVER.TS: ${correctPath}`);
+			let options = await getOptions(correctPath);
+
+			// Verifica se o index foi passado como parâmetro na URL
+			if (!index) return fail(400, { message: 'Parâmetro inválido ' });
+
+			const unidade = options.setor[index];
+			if (!unidade) {
+				return fail(404, { message: 'Unidade não encontrada' });
+			}
+			options.setor[index] = setorenew;
+
+			let optionsc = JSON.stringify(options, null, 4);
+			await writeOptions(correctPath, optionsc);
+		} catch (error) {
+			console.log(error);
+			return fail(500, { message: 'Erro interno do servidor' });
+		}
+	},
+
+	getaddsetor: async (event) => {
+		const index = event.url.searchParams.get('index');
+
+		const setornew = (await event.request.formData()).get('input');
+		try {
+			let currPath = new URL(import.meta.url).pathname;
+			let folder = 'build';
+			let correctPath = '/opt/render/project/src/build/option.json';
+			if (dev) {
+				folder = 'ramais';
+				correctPath = stripDir(currPath, folder) + '/option.json';
+			}
+
+			console.log(`PATH NO SERVER.TS: ${correctPath}`);
+			let options = await getOptions(correctPath);
+
+			options.setor.push(setornew);
 
 			console.log(options.unidade);
 			let optionsc = JSON.stringify(options, null, 4);
