@@ -201,16 +201,17 @@
 									>
 								</button>
 							</div>
+							<div class=" flex items-center m-5 justify-evenly">
+								<div class="flex justify-evenly items-center rounded-md p-2 bg-blue-300">
+									<button
+										type="submit"
+										formaction="?/getaddUnidade&index={index}&unidade={unidades}&secret={expectedSecret}"
+										>Adicionar</button
+									>
+								</div>
+							</div>
 						</form>
 					{/each}
-				</div>
-			</div>
-			<div class=" flex items-center m-5 justify-evenly">
-				<div class="flex justify-evenly items-center rounded-md p-2 bg-green-300">
-					<button> Atualizar</button>
-				</div>
-				<div class="flex justify-evenly items-center rounded-md p-2 bg-blue-300">
-					<button>Adicionar</button>
 				</div>
 			</div>
 		</div>

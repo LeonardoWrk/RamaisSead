@@ -184,5 +184,40 @@ export const actions: Actions = {
 			console.log(error);
 			return fail(500, { message: 'Erro interno do servidor' });
 		}
+	},
+
+	getaddUnidade: async (event) => {
+		const index = event.url.searchParams.get('index');
+
+		const unidadenew = (await event.request.formData()).get('input');
+		console.log(unidadenew);
+		try {
+			let currPath = new URL(import.meta.url).pathname;
+			let folder = 'build';
+			let correctPath = '/opt/render/project/src/build/option.json';
+			if (dev) {
+				folder = 'ramais';
+				correctPath = stripDir(currPath, folder) + '/option.json';
+			}
+
+			console.log(`PATH NO SERVER.TS: ${correctPath}`);
+			let options = await getOptions(correctPath);
+
+			// Verifica se o index foi passado como parâmetro na URL
+			if (!index) return fail(400, { message: 'Parâmetro inválido ' });
+
+			const unidade = options.unidade[index];
+			if (!unidade) {
+				return fail(404, { message: 'Unidade não encontrada' });
+			}
+			options.unidade.push(unidadenew);
+
+			console.log(options.unidade);
+			let optionsc = JSON.stringify(options, null, 4);
+			await writeOptions(correctPath, optionsc);
+		} catch (error) {
+			console.log(error);
+			return fail(500, { message: 'Erro interno do servidor' });
+		}
 	}
 };
