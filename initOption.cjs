@@ -3,7 +3,6 @@ const path = require('path');
 
 const dataToWrite = {
 	setor: [
-		'',
 		'SGRH',
 		'DAF',
 		'ASCOM',
@@ -51,7 +50,6 @@ const dataToWrite = {
 		'GCLOG'
 	],
 	unidade: [
-		'',
 		'CONTABILIDADE',
 		'NÚCLEO',
 		'GUARITA',
