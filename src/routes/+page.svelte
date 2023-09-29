@@ -20,7 +20,32 @@
 	>
 	<div class=" drop-shadow-lg rounded-lg flex flex-col h-[90vh] mt-20 items-center text-white">
 		<div class="flex flex-col w-9/12 bg-theme-soft">
-			<Head width="w-1/5" />
+			<div class="flex w-full border border-[#27293a]">
+				<span
+					class="border border-[#27293a] h-full flex justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					>org</span
+				>
+				<span
+					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					>unidade</span
+				>
+				<span
+					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					>setor</span
+				>
+				<span
+					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					>user</span
+				>
+				<span
+					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					>ramal</span
+				>
+				<span
+					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					>servico</span
+				>
+			</div>
 			<Pesquisa bind:data bind:pesquisa width="w-1/5" />
 		</div>
 	</div>
