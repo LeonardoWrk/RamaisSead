@@ -10,39 +10,39 @@
 	$: ({ ramais } = data);
 </script>
 
+<a
+	href="/login"
+	class="hover:bg-[#808080] text-center flex justify-center active:scale-90 duration-100 bg-[white] font-bold text-black p-4 drop-shadow-lg shadow-[#002776] w-20 rounded-lg absolute"
+	>ADM</a
+>
 <div class="w-full h-[10vh]">
-	<Nav bind:pesquisa>
-		<a
-			href="/login"
-			class="mr-auto bg-theme-soft p-4 m-2 w-[15%] hover:bg-theme-soft text-center flex justify-center rounded-md active:scale-90 duration-100"
-			>ADM</a
-		></Nav
-	>
-	<div class=" drop-shadow-lg rounded-lg flex flex-col h-[90vh] mt-20 items-center text-white">
-		<div class="flex flex-col w-9/12 bg-theme-soft">
-			<div class="flex w-full border border-[#27293a]">
+	<Nav bind:pesquisa />
+
+	<div class=" rounded-lg flex flex-col h-[90vh] mt-20 items-center text-black">
+		<div class="flex flex-col w-9/12 bg-white shadow-lg shadow-[#002776] opacity-75">
+			<div class="flex w-full border">
 				<span
-					class="border border-[#27293a] h-full flex justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					class="border h-full flex justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
 					>org</span
 				>
 				<span
-					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					class="border h-full flex justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
 					>unidade</span
 				>
 				<span
-					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					class="border h-full flex justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
 					>setor</span
 				>
 				<span
-					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					class="border h-full flex justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
 					>user</span
 				>
 				<span
-					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					class="border h-full flex justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
 					>ramal</span
 				>
 				<span
-					class="border h-full flex border-[#27293a] justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					class="border h-full flex justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
 					>servico</span
 				>
 			</div>

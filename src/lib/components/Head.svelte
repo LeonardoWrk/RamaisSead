@@ -5,9 +5,9 @@
 	$: w = width;
 </script>
 
-<div class="flex w-full border border-[#27293a]">
+<div class="flex w-full border border-[#002776]">
 	<span
-		class="border border-[#27293a] h-full flex justify-center items-center {w} p-4 font-bold uppercase text-xl"
+		class="border border-[#002776] h-full flex justify-center items-center {w} p-4 font-bold uppercase text-xl"
 		>org</span
 	>
 
@@ -16,7 +16,7 @@
 		on:click={() => {
 			opedit = true;
 		}}
-		class="border h-full flex border-[#27293a] justify-center items-center {w} p-4 font-bold uppercase text-xl"
+		class="border h-full flex border-[#002776] justify-center items-center {w} p-4 font-bold uppercase text-xl"
 	>
 		<svg
 			class="h-[1em]"
@@ -35,7 +35,7 @@
 		on:click={() => {
 			opedit2 = true;
 		}}
-		class="border h-full flex border-[#27293a] justify-center items-center {w} p-4 font-bold uppercase text-xl"
+		class="border h-full flex border-[#002776] justify-center items-center {w} p-4 font-bold uppercase text-xl"
 	>
 		<svg
 			class="h-[1em]"
@@ -49,15 +49,15 @@
 		setor
 	</button>
 	<span
-		class="border h-full flex border-[#27293a] justify-center items-center {w} p-4 font-bold uppercase text-xl"
+		class="border h-full flex border-[#002776] justify-center items-center {w} p-4 font-bold uppercase text-xl"
 		>user</span
 	>
 	<span
-		class="border h-full flex border-[#27293a] justify-center items-center {w} p-4 font-bold uppercase text-xl"
+		class="border h-full flex border-[#002776] justify-center items-center {w} p-4 font-bold uppercase text-xl"
 		>ramal</span
 	>
 	<span
-		class="border h-full flex border-[#27293a] justify-center items-center {w} p-4 font-bold uppercase text-xl"
+		class="border h-full flex border-[#002776] justify-center items-center {w} p-4 font-bold uppercase text-xl"
 		>servico</span
 	>
 	<slot />

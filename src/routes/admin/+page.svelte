@@ -82,21 +82,27 @@
 
 						<div class="flex flex-col justify-center items-center p-4">
 							<label class="text-white p-2" for="org">Unidade</label>
-							<input
+							<select
 								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
-								type="text"
 								name="unidade"
-								placeholder={ramalEdit.unidade}
-							/>
+							>
+								<option value="" />
+								{#each data.options.unidade as unidade}
+									<option>{unidade}</option>
+								{/each}
+							</select>
 						</div>
 						<div class="flex flex-col justify-center items-center p-4">
 							<label class="text-white p-2" for="org">Setor</label>
-							<input
+							<select
 								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
-								type="text"
 								name="setor"
-								placeholder={ramalEdit.setor}
-							/>
+							>
+								<option value="" />
+								{#each data.options.setor as setor}
+									<option>{setor}</option>
+								{/each}
+							</select>
 						</div>
 						<div class="flex flex-col justify-center items-center p-4">
 							<label class="text-white p-2" for="org">User</label>

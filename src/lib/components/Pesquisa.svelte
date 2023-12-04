@@ -35,30 +35,17 @@
 				.toLowerCase()
 				.includes(pesquisa.toLowerCase())}
 			<div class="flex w-full">
-				<span class="border h-full flex border-[#27293a] justify-center items-center {w} p-2"
-					>{ramal.org}</span
-				>
-				<span class="border h-full flex border-[#27293a] justify-center items-center {w} p-2"
-					>{ramal.unidade}</span
-				>
-				<span class="border h-full flex border-[#27293a] justify-center items-center {w} p-2"
-					>{ramal.setor}</span
-				>
-				<span class="border h-full flex border-[#27293a] justify-center items-center {w} p-2"
-					>{ramal.user}</span
-				>
-				<span class="border h-full flex border-[#27293a] justify-center items-center {w} p-2"
-					>{ramal.ramal}</span
-				>
-				<span
-					class="border h-full flex border-[#27293a] justify-center items-center uppercase {w} p-2"
+				<span class="border h-full flex justify-center items-center {w} p-2">{ramal.org}</span>
+				<span class="border h-full flex justify-center items-center {w} p-2">{ramal.unidade}</span>
+				<span class="border h-full flex justify-center items-center {w} p-2">{ramal.setor}</span>
+				<span class="border h-full flex justify-center items-center {w} p-2">{ramal.user}</span>
+				<span class="border h-full flex justify-center items-center {w} p-2">{ramal.ramal}</span>
+				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
 					>{ramal.servico}</span
 				>
 
 				{#if isAdm}
-					<span
-						class="border h-full flex border-[#27293a] justify-evenly items-center uppercase w-[16%] p-3"
-					>
+					<span class="border h-full flex justify-evenly items-center uppercase w-[16%] p-3">
 						<button formaction="?/deleteRamais&id={ramal.id}&secret={expectedSecret}">
 							<svg
 								class="h-[1.2em] text-red-300"
@@ -86,31 +73,18 @@
 				{/if}
 			</div>
 		{:else if !pesquisa}
-			<div class="flex border-[#27293a] w-full">
-				<span class="border h-full flex border-[#27293a] justify-center items-center {w} p-2"
-					>{ramal.org}</span
-				>
-				<span class="border h-full flex border-[#27293a] justify-center items-center {w} p-2"
-					>{ramal.unidade}</span
-				>
-				<span class="border h-full flex border-[#27293a] justify-center items-center {w} p-2"
-					>{ramal.setor}</span
-				>
-				<span class="border h-full flex border-[#27293a] justify-center items-center {w} p-2"
-					>{ramal.user}</span
-				>
-				<span class="border h-full flex border-[#27293a] justify-center items-center {w} p-2"
-					>{ramal.ramal}</span
-				>
-				<span
-					class="border h-full flex border-[#27293a] justify-center items-center uppercase {w} p-2"
+			<div class="flex w-full">
+				<span class="border h-full flex justify-center items-center {w} p-2">{ramal.org}</span>
+				<span class="border h-full flex justify-center items-center {w} p-2">{ramal.unidade}</span>
+				<span class="border h-full flex justify-center items-center {w} p-2">{ramal.setor}</span>
+				<span class="border h-full flex justify-center items-center {w} p-2">{ramal.user}</span>
+				<span class="border h-full flex justify-center items-center {w} p-2">{ramal.ramal}</span>
+				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
 					>{ramal.servico}</span
 				>
 
 				{#if isAdm}
-					<span
-						class="border h-full flex border-[#27293a] justify-evenly items-center uppercase w-[16%] p-3"
-					>
+					<span class="border h-full flex justify-evenly items-center uppercase w-[16%] p-3">
 						<button formaction="?/deleteRamais&id={ramal.id}&secret={expectedSecret}">
 							<svg
 								class="h-[1.2em] text-red-300"

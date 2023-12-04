@@ -3,14 +3,14 @@
 </script>
 
 <div class="flex justify-center">
-	<nav class=" bg-[#1a1c26] font-bold text-white p-3 drop-shadow-lg w-3/6 rounded-lg">
-		<div class="flex justify-center items-center">
+	<nav class=" bg-white font-bold text-black p-3 shadow-lg shadow-[#002776] opacity-75 w-3/6">
+		<div class="flex items-center justify-evenly">
 			<div class="text-4xl">Ramais</div>
 
 			<slot />
 
 			<input
-				class="bg-theme-soft rounded-lg w-1/2 h-[63px]"
+				class="bg-white rounded-lg w-[70%] h-[63px] border border-[#002776]"
 				placeholder="    e.g: buscar ramais"
 				type="text"
 				bind:value={pesquisa}
