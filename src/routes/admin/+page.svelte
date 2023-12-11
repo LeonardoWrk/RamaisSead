@@ -41,7 +41,7 @@
 	{#if edit}
 		<div
 			transition:slide={{ axis: 'x' }}
-			class=" absolute right-0 transform translate-y-[15%] z-50 bg-[#1a1c26] drop-shadow-lg rounded-lg border border-[#27293a]"
+			class=" absolute right-0 transform translate-y-[15%] z-50 drop-shadow-lg rounded-lg border border-[#27293a]"
 		>
 			<div class="flex w-full items-center rounded-md p-2">
 				<button
@@ -51,7 +51,7 @@
 					}}
 				>
 					<svg
-						class="text-white"
+						class="text-black"
 						xmlns="http://www.w3.org/2000/svg"
 						height="1.5em"
 						fill="currentColor"
@@ -61,7 +61,7 @@
 						/></svg
 					>
 				</button>
-				<div class="ml-10 text-white text-xl font-extrabold">Atualizar</div>
+				<div class="ml-10 text-black text-xl font-extrabold" />
 			</div>
 			<div class="w-full flex justify-around bg-theme-base">
 				<form
@@ -71,20 +71,22 @@
 				>
 					<div class="flex-col flex w-full h-full text-black items-center font-extrabold">
 						<div class="flex flex-col justify-center items-center p-4">
-							<label class="text-white p-2" for="org">Org</label>
+							<label class="text-black p-2" for="org">Org</label>
 							<input
-								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								class="uppercase w-[85%] h-8 rounded-lg text-black border border-[#27293a]"
 								type="text"
 								name="org"
+								required
 								placeholder={ramalEdit.org}
 							/>
 						</div>
 
 						<div class="flex flex-col justify-center items-center p-4">
-							<label class="text-white p-2" for="org">Unidade</label>
+							<label class="text-black p-2" for="org">Unidade</label>
 							<select
-								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								class="uppercase w-[85%] h-8 rounded-lg text-black border border-[#27293a]"
 								name="unidade"
+								required
 							>
 								<option value="" />
 								{#each data.options.unidade as unidade}
@@ -93,10 +95,11 @@
 							</select>
 						</div>
 						<div class="flex flex-col justify-center items-center p-4">
-							<label class="text-white p-2" for="org">Setor</label>
+							<label class="text-black p-2" for="org">Setor</label>
 							<select
-								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								class="uppercase w-[85%] h-8 rounded-lg text-black border border-[#27293a]"
 								name="setor"
+								required
 							>
 								<option value="" />
 								{#each data.options.setor as setor}
@@ -105,30 +108,33 @@
 							</select>
 						</div>
 						<div class="flex flex-col justify-center items-center p-4">
-							<label class="text-white p-2" for="org">User</label>
+							<label class="text-black p-2" for="org">User</label>
 							<input
-								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								class="uppercase w-[85%] h-8 rounded-lg text-black border border-[#27293a]"
 								type="text"
 								name="user"
+								required
 								placeholder={ramalEdit.user}
 							/>
 						</div>
 						<div class="flex flex-col justify-center items-center p-4">
-							<label class="text-white p-2" for="org">Ramal</label>
+							<label class="text-black p-2" for="org">Ramal</label>
 							<input
-								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								class="uppercase w-[85%] h-8 rounded-lg text-black border border-[#27293a]"
 								type="text"
 								pattern="[0-9/]*"
 								name="ramal"
+								required
 								placeholder={ramalEdit.ramal}
 							/>
 						</div>
 						<div class="flex flex-col justify-center items-center p-4">
-							<label class="text-white p-2" for="org">servico</label>
+							<label class="text-black p-2" for="org">servico</label>
 							<input
-								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								class="uppercase w-[85%] h-8 rounded-lg text-black border border-[#27293a]"
 								type="text"
 								name="servico"
+								required
 								placeholder={ramalEdit.servico}
 							/>
 						</div>
@@ -146,7 +152,7 @@
 	{#if opedit}
 		<div
 			transition:slide={{ axis: 'x' }}
-			class=" absolute right-0 transform translate-y-[15%] z-50 bg-[#1a1c26] drop-shadow-lg rounded-lg border border-[#27293a]"
+			class=" absolute right-0 transform translate-y-[15%] z-50 drop-shadow-lg rounded-lg border border-[#27293a]"
 		>
 			<div class="flex w-full items-center rounded-md p-2">
 				<button
@@ -156,7 +162,7 @@
 					}}
 				>
 					<svg
-						class="text-white"
+						class="text-black"
 						xmlns="http://www.w3.org/2000/svg"
 						height="1.5em"
 						fill="currentColor"
@@ -166,12 +172,11 @@
 						/></svg
 					>
 				</button>
-				<div class="ml-10 text-white text-xl font-extrabold">Atualizar</div>
 			</div>
 
 			<div class="w-full flex justify-around bg-theme-base max-h-[600px] overflow-y-auto">
 				<div class="flex-col flex w-full h-full text-black items-center font-extrabold">
-					<span class="text-white p-2"> Unidade</span>
+					<span class="text-black p-2"> Unidade</span>
 					<div class="">
 						<form
 							action="?/getaddUnidade&secret={expectedSecret}"
@@ -179,7 +184,7 @@
 							class="flex justify-center items-center p-4"
 						>
 							<input
-								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								class="uppercase w-[85%] h-8 rounded-lg text-black border border-[#27293a]"
 								type="text"
 								name="input"
 							/>
@@ -200,7 +205,7 @@
 						<form action="?/getChamadasUnidade&index={index}&secret={expectedSecret}" method="POST">
 							<div class="flex justify-center items-center p-4">
 								<input
-									class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+									class="uppercase w-[85%] h-8 rounded-lg text-black border border-[#27293a]"
 									type="text"
 									value=""
 									name="input"
@@ -241,7 +246,7 @@
 	{#if opedit2}
 		<div
 			transition:slide={{ axis: 'x' }}
-			class=" absolute right-0 transform translate-y-[15%] z-50 bg-[#1a1c26] drop-shadow-lg rounded-lg border border-[#27293a]"
+			class=" absolute right-0 transform translate-y-[15%] z-50 drop-shadow-lg rounded-lg border border-[#27293a]"
 		>
 			<div class="flex w-full items-center rounded-md p-2">
 				<button
@@ -251,7 +256,7 @@
 					}}
 				>
 					<svg
-						class="text-white"
+						class="text-black"
 						xmlns="http://www.w3.org/2000/svg"
 						height="1.5em"
 						fill="currentColor"
@@ -261,12 +266,11 @@
 						/></svg
 					>
 				</button>
-				<div class="ml-10 text-white text-xl font-extrabold">Atualizar</div>
 			</div>
 
-			<div class="w-full flex justify-around bg-theme-base max-h-[600px] overflow-y-auto">
+			<div class="w-full flex justify-around bg-white max-h-[600px] overflow-y-auto">
 				<div class="flex-col flex w-full h-full text-black items-center font-extrabold">
-					<span class="text-white p-2"> setor</span>
+					<span class="text-black p-2"> Setor</span>
 					<div class="">
 						<form
 							action="?/getaddsetor&secret={expectedSecret}"
@@ -274,7 +278,7 @@
 							class="flex justify-center items-center p-4"
 						>
 							<input
-								class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+								class="uppercase w-[85%] h-8 rounded-lg text-black border border-[#27293a]"
 								type="text"
 								name="input"
 							/>
@@ -295,7 +299,7 @@
 						<form action="?/getChamadasSetor&index={index}&secret={expectedSecret}" method="POST">
 							<div class="flex justify-center items-center p-4">
 								<input
-									class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+									class="uppercase w-[85%] h-8 rounded-lg text-black border border-[#27293a]"
 									type="text"
 									value={setor}
 									name="input"
@@ -339,33 +343,35 @@
 			>NORMAL</a
 		></Nav
 	>
-	<div class="bg-theme-base text-white h-full w-full m-0 mt-20 flex flex-col items-center">
+	<div class="bg-theme-base text-black h-full w-full m-0 mt-20 flex flex-col items-center">
 		<div class=" w-[70%] h-[5em] ml-4 mr-4 p-0.5">
 			<form action="?/createRamais&secret={expectedSecret}" method="POST">
 				{#if !auth}
 					<ConfirmBox bind:auth />
 				{/if}
-				<div class=" drop-shadow-lg rounded-lg flex flex-col h-[90vh] items-center text-white">
-					<div class="flex flex-col w-full bg-theme-soft">
+				<div class=" drop-shadow-lg rounded-lg flex flex-col h-[90vh] items-center text-black">
+					<div class="flex flex-col w-full bg-gray-300">
 						<Head bind:opedit bind:opedit2 width="w-[14%]">
 							<span
 								class="h-full flex justify-center items-center w-[14%] p-4 font-bold uppercase text-xl"
 							/>
 						</Head>
-						<div class="flex justify-around bg-theme-base">
-							<div class="flex w-full h-full text-black border border-[#27293a]">
-								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">
+						<div class="flex justify-around bg-theme-base border border-[#27293a]">
+							<div class="flex w-full h-full text-black">
+								<div class="flex justify-center items-center w-[14%] p-4">
 									<input
-										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+										class="uppercase w-[85%] h-8 rounded-lg border border-[#27293a] text-black"
 										type="text"
 										name="org"
+										required
 									/>
 								</div>
 
-								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[14%] p-4">
 									<select
-										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+										class="uppercase w-[85%] h-8 rounded-lg border border-[#27293a] text-black"
 										name="unidade"
+										required
 									>
 										<option value="" />
 										{#each data.options.unidade as unidade}
@@ -374,10 +380,11 @@
 									</select>
 								</div>
 
-								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[14%] p-4">
 									<select
-										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+										class="uppercase w-[85%] h-8 rounded-lg border border-[#27293a] text-black"
 										name="setor"
+										required
 									>
 										<option value="" />
 										{#each data.options.setor as setor}
@@ -385,26 +392,29 @@
 										{/each}
 									</select>
 								</div>
-								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[14%] p-4">
 									<input
-										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+										class="uppercase w-[85%] h-8 rounded-lg border border-[#27293a] text-black"
 										type="text"
 										name="user"
+										required
 									/>
 								</div>
-								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[14%] p-4">
 									<input
-										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+										class="uppercase w-[85%] h-8 rounded-lg border border-[#27293a] text-black"
 										type="text"
-										pattern="[0-9/]*"
+										pattern="[0-9]+(/[0-9]+)?"
 										name="ramal"
+										required
 									/>
 								</div>
-								<div class="flex justify-center items-center w-[14%] p-4 border border-[#27293a]">
+								<div class="flex justify-center items-center w-[14%] p-4">
 									<input
-										class="uppercase w-[85%] h-8 rounded-lg bg-theme-secondaryBase text-white border border-[#27293a]"
+										class="uppercase w-[85%] h-8 rounded-lg border border-[#27293a] text-black"
 										type="text"
 										name="servico"
+										required
 									/>
 								</div>
 
