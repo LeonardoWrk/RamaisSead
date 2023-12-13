@@ -34,7 +34,7 @@
 					>setor</span
 				>
 				<span
-					class="border h-full flex justify-center items-center w-1/5 p-4 font-bold uppercase text-xl"
+					class="border h-full flex justify-center items-center w-[40.1%] p-4 font-bold uppercase text-xl"
 					>user</span
 				>
 				<span
@@ -46,7 +46,7 @@
 					>servico</span
 				>
 			</div>
-			<Pesquisa bind:data bind:pesquisa width="w-1/5" />
+			<Pesquisa bind:data bind:pesquisa width="w-1/4" width2="w-1/2" />
 		</div>
 	</div>
 </div>

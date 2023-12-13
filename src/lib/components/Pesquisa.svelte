@@ -17,8 +17,10 @@
 
 	$: ({ ramais } = data);
 	export let width = '';
+	export let width2 = '';
 
 	$: w = width;
+	$: a = width2;
 </script>
 
 <div class="flex flex-col w-full bg-theme-base max-h-[600px] overflow-y-auto">
@@ -44,7 +46,7 @@
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
 					>{ramal.setor}</span
 				>
-				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
+				<span class="border h-full flex justify-center items-center uppercase {a} p-2"
 					>{ramal.user}</span
 				>
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
@@ -94,7 +96,7 @@
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
 					>{ramal.setor}</span
 				>
-				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
+				<span class="border h-full flex justify-center items-center uppercase {a} p-"
 					>{ramal.user}</span
 				>
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"

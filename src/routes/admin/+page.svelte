@@ -441,6 +441,7 @@
 							bind:edit
 							bind:ramalEdit
 							width="w-[14%]"
+							width2="w-1/2"
 							isAdm={true}
 							{expectedSecret}
 						/>
