@@ -22,6 +22,7 @@
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.25.0",
 		"@types/jquery": "^3.5.29",
+		"@types/oracledb": "^6.0.4",
 		"@typescript-eslint/eslint-plugin": "^5.62.0",
 		"@typescript-eslint/parser": "^5.62.0",
 		"autoprefixer": "^10.4.15",
@@ -48,11 +49,13 @@
 		"@sveltejs/adapter-node": "1.0.0-next.106",
 		"@vercel/kv": "^0.2.3",
 		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
 		"jquery": "^3.7.1",
 		"kysely": "^0.26.3",
 		"kysely-codegen": "^0.10.1",
 		"kysely-planetscale": "^1.4.0",
 		"mysql2": "^3.6.1",
+		"oracledb": "^6.2.0",
 		"vercel": "^32.2.5"
 	}
 }

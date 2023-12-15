@@ -1,9 +1,12 @@
 import type { Actions, PageServerLoad } from './$types';
 
 import { promises as fs } from 'fs';
-import { db } from '$lib/db/';
+
+import { getConnection } from '$lib/db/index.cjs';
 import { fail } from '@sveltejs/kit';
 import { dev } from '$app/environment';
+
+let db = await getConnection();
 
 function stripDir(path: string, endline: string) {
 	let pathArray = path.split('/');
@@ -51,7 +54,7 @@ export const load: PageServerLoad = async () => {
 
 	return {
 		options,
-		ramais: await db.selectFrom('Ramais').selectAll().execute()
+		ramais: await db.execute('SELECT * FROM Ramais')
 	};
 };
 
@@ -69,26 +72,22 @@ export const actions: Actions = {
 		};
 
 		try {
-			await db
-				.insertInto('Ramais')
-				.values({
-					org,
-					unidade,
-					setor,
-					user,
-					ramal,
-					servico
-				})
-				.execute();
+			await db.execute(
+				`INSERT INTO Ramais (org, unidade, setor, user, ramal, servico)
+				VALUES (:1, :2, :3, :4)`,
+				[org, unidade, setor, user, ramal, servico]
+			);
 		} catch (error) {
 			console.log(error);
 		}
 	},
+
 	deleteRamais: async ({ url }) => {
 		const id = url.searchParams.get('id');
 		if (!id) return fail(400, { message: 'invalid request ' });
 		try {
-			await db.deleteFrom('Ramais').where('Ramais.id', '=', parseInt(id)).execute();
+			let uid = parseInt(id);
+			await db.execute(`DELETE FROM Ramais WHERE id = :1`, [uid]);
 		} catch (error) {
 			console.log(error);
 		}
@@ -107,16 +106,18 @@ export const actions: Actions = {
 			ramal: string;
 			servico: string;
 		};
+
 		try {
-			await db
-				.updateTable('Ramais')
-				.set({ org, unidade, setor, user, ramal, servico })
-				.where('Ramais.id', '=', id)
-				.executeTakeFirst();
+			await db.execute(
+				`UPDATE pessoa SET nome = :1, telefone = :2, email = :3, data_nascimento = :4
+				WHERE id = :5`,
+				[org, unidade, setor, user, ramal, servico]
+			);
 		} catch (error) {
 			// console.log('ERROR', error);
 		}
 	},
+
 	getChamadasUnidade: async (event) => {
 		const index = event.url.searchParams.get('index');
 
