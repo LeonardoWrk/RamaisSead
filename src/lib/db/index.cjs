@@ -1,5 +1,5 @@
-export const oracledb = require('oracledb');
-require('dotenv').config();
+import * as oracledb from 'oracledb';
+import 'dotenv/config';
 
 // contains the hr schema password
 const config = {
@@ -13,4 +13,4 @@ export async function getConnection() {
 	return db;
 }
 
-module.exports = { getConnection, oracledb };
+export { oracledb };
