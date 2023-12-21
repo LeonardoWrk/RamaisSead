@@ -54,7 +54,7 @@ export const load: PageServerLoad = async () => {
 
 	return {
 		options,
-		ramais: await db.execute('SELECT * FROM Ramais')
+		ramais: (await db.execute('SELECT * FROM ramais')).rows
 	};
 };
 

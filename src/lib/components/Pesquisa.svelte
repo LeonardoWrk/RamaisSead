@@ -3,7 +3,7 @@
 	import ConfirmBox from './ConfirmBox.svelte';
 
 	export let pesquisa = '';
-	export let data: PageData;
+	export let data: any;
 	export let isAdm: boolean = false;
 	export let expectedSecret: string = '';
 	export let edit: boolean = false;
@@ -12,10 +12,12 @@
 	function opne2(ramal: Ramal) {
 		edit = true;
 		ramalEdit = ramal;
-		console.log(ramalEdit);
 	}
 
-	$: ({ ramais } = data);
+	let ramais: any;
+
+	console.log(data);
+	console.log('estar vindo undifined?', ramais);
 	export let width = '';
 	export let width2 = '';
 
@@ -24,36 +26,26 @@
 </script>
 
 <div class="flex flex-col w-full bg-theme-base max-h-[600px] overflow-y-auto">
-	{#each ramais as ramal}
-		{#if ramal.org.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.unidade
-				.toLowerCase()
-				.includes(pesquisa.toLowerCase()) || ramal.setor
-				.toLowerCase()
-				.includes(pesquisa.toLowerCase()) || ramal.user
-				.toLowerCase()
-				.includes(pesquisa.toLowerCase()) || ramal.ramal
-				.toLowerCase()
-				.includes(pesquisa.toLowerCase()) || ramal.servico
-				.toLowerCase()
-				.includes(pesquisa.toLowerCase())}
+	{#each data.ramais as ramal}
+		{#if ramal.ORG.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.UNIDADE.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.SETOR.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.USER.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.RAMAL.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.SERVICO.toLowerCase().includes(pesquisa.toLowerCase())}
 			<div class="flex w-full">
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
-					>{ramal.org}</span
+					>{ramal.ORG}</span
 				>
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
-					>{ramal.unidade}</span
+					>{ramal.UNIDADE}</span
 				>
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
-					>{ramal.setor}</span
+					>{ramal.SETOR}</span
 				>
 				<span class="border h-full flex justify-center items-center uppercase {a} p-2"
-					>{ramal.user}</span
+					>{ramal.US}</span
 				>
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
-					>{ramal.ramal}</span
+					>{ramal.RAMAL}</span
 				>
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
-					>{ramal.servico}</span
+					>{ramal.SERVICO}</span
 				>
 
 				{#if isAdm}
@@ -88,22 +80,22 @@
 		{:else if !pesquisa}
 			<div class="flex w-full">
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
-					>{ramal.org}</span
+					>{ramal.ORG}</span
 				>
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
-					>{ramal.unidade}</span
+					>{ramal.UNIDADE}</span
 				>
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
-					>{ramal.setor}</span
+					>{ramal.SETOR}</span
 				>
 				<span class="border h-full flex justify-center items-center uppercase {a} p-"
-					>{ramal.user}</span
+					>{ramal.US}</span
 				>
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
-					>{ramal.ramal}</span
+					>{ramal.RAMAL}</span
 				>
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
-					>{ramal.servico}</span
+					>{ramal.SERVICO}</span
 				>
 
 				{#if isAdm}
