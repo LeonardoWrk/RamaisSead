@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Ramais } from '$lib/db/schema';
 	import type { PageData } from '../../routes/$types';
 	import ConfirmBox from './ConfirmBox.svelte';
 
@@ -7,9 +8,9 @@
 	export let isAdm: boolean = false;
 	export let expectedSecret: string = '';
 	export let edit: boolean = false;
-	export let ramalEdit: Ramal | undefined = undefined;
+	export let ramalEdit: any;
 
-	function opne2(ramal: Ramal) {
+	function opne2(ramal: any) {
 		edit = true;
 		ramalEdit = ramal;
 	}
@@ -50,7 +51,7 @@
 
 				{#if isAdm}
 					<span class="border h-full flex justify-evenly items-center uppercase w-[16%] p-3">
-						<button formaction="?/deleteRamais&id={ramal.id}&secret={expectedSecret}">
+						<button formaction="?/deleteRamais&id={ramal.ID}&secret={expectedSecret}">
 							<svg
 								class="h-[1.2em] text-red-300"
 								xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +101,7 @@
 
 				{#if isAdm}
 					<span class="border h-full flex justify-evenly items-center uppercase w-[16%] p-3">
-						<button formaction="?/deleteRamais&id={ramal.id}&secret={expectedSecret}">
+						<button formaction="?/deleteRamais&id={ramal.ID}&secret={expectedSecret}">
 							<svg
 								class="h-[1.2em] text-red-300"
 								xmlns="http://www.w3.org/2000/svg"

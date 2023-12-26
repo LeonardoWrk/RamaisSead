@@ -11,7 +11,7 @@
 	let edit: boolean = false;
 	let opedit: boolean = false;
 	let opedit2: boolean = false;
-	let ramalEdit: Ramal;
+	let ramalEdit: any;
 
 	let authorized = false;
 	let adminSecret: string | null = null; // Variável para armazenar o "secret" da página de login
@@ -66,9 +66,10 @@
 			<div class="w-full flex justify-around bg-theme-base">
 				<form
 					class="w-full"
-					action="?/updateramais&id={ramalEdit.id}&secret={expectedSecret}"
+					action="?/updateramais&id={ramalEdit.ID}&secret={expectedSecret}"
 					method="POST"
 				>
+					<h2>{ramalEdit.ID}</h2>
 					<div class="flex-col flex w-full h-full text-black items-center font-extrabold">
 						<div class="flex flex-col justify-center items-center p-4">
 							<label class="text-black p-2" for="org">Org</label>
@@ -77,7 +78,7 @@
 								type="text"
 								name="org"
 								required
-								placeholder={ramalEdit.org}
+								placeholder={ramalEdit.ORG}
 							/>
 						</div>
 
@@ -112,9 +113,9 @@
 							<input
 								class="uppercase w-[85%] h-8 rounded-lg text-black border border-[#27293a]"
 								type="text"
-								name="user"
+								name="us"
 								required
-								placeholder={ramalEdit.user}
+								placeholder={ramalEdit.US}
 							/>
 						</div>
 						<div class="flex flex-col justify-center items-center p-4">
@@ -125,7 +126,7 @@
 								pattern="[0-9/]*"
 								name="ramal"
 								required
-								placeholder={ramalEdit.ramal}
+								placeholder={ramalEdit.RAMAL}
 							/>
 						</div>
 						<div class="flex flex-col justify-center items-center p-4">
@@ -135,7 +136,7 @@
 								type="text"
 								name="servico"
 								required
-								placeholder={ramalEdit.servico}
+								placeholder={ramalEdit.SERVICO}
 							/>
 						</div>
 						<div class="flex m-6 justify-center items-center border border-[#27293a]">
@@ -396,7 +397,7 @@
 									<input
 										class="uppercase w-[85%] h-8 rounded-lg border border-[#27293a] text-black"
 										type="text"
-										name="user"
+										name="us"
 										required
 									/>
 								</div>

@@ -39,6 +39,21 @@ async function writeOptions(path: string, content: any) {
 			console.log('Failed writing file ', err);
 		});
 }
+function arraysParaObjeto<T>(colunas: string[], arrays: T[][]): Record<string, T>[] {
+	const objetos: Record<string, T>[] = [];
+
+	arrays.forEach((array) => {
+		const objeto: Record<string, T> = {};
+
+		array.forEach((item, index) => {
+			objeto[colunas[index]] = item;
+		});
+
+		objetos.push(objeto);
+	});
+
+	return objetos;
+}
 
 export const load: PageServerLoad = async () => {
 	let currPath = new URL(import.meta.url).pathname;
@@ -51,32 +66,44 @@ export const load: PageServerLoad = async () => {
 
 	console.log(`PATH NO SERVER.TS: ${correctPath}`);
 	let options = await getOptions(correctPath);
+	const db = await getConnection();
+	const result: any = await db.execute('SELECT * FROM ramais');
 
-	return {
-		options,
-		ramais: (await db.execute('SELECT * FROM ramais')).rows
-	};
+	if (result.metaData && result.rows && result.rows.length > 0) {
+		const colunas = result.metaData.map((column: { name: string }) => column.name);
+		const objetos = arraysParaObjeto(colunas, result.rows);
+
+		const titulo = objetos.shift(); // Removendo e obtendo o primeiro objeto como título
+
+		return { titulo, ramais: objetos, options };
+	}
+
+	return { titulo: null, ramais: [], options }; // ou retorne algo adequado para uma situação sem dados
 };
 
 export const actions: Actions = {
 	createRamais: async ({ request }) => {
-		const { org, unidade, setor, user, ramal, servico } = Object.fromEntries(
+		const { org, unidade, setor, us, ramal, servico } = Object.fromEntries(
 			await request.formData()
 		) as {
 			org: string;
 			unidade: string;
 			setor: string;
-			user: string;
+			us: string;
 			ramal: string;
 			servico: string;
 		};
 
 		try {
-			await db.execute(
-				`INSERT INTO Ramais (org, unidade, setor, user, ramal, servico)
-				VALUES (:1, :2, :3, :4)`,
-				[org, unidade, setor, user, ramal, servico]
+			let result = await db.execute(
+				`INSERT INTO ramais (ORG, UNIDADE, SETOR, US, RAMAL, SERVICO)
+				VALUES (:1, :2, :3, :4, :5, :6)`,
+				[org, unidade, setor, us, ramal, servico]
 			);
+
+			if (result.rowsAffected) {
+				await db.commit();
+			}
 		} catch (error) {
 			console.log(error);
 		}
@@ -87,32 +114,43 @@ export const actions: Actions = {
 		if (!id) return fail(400, { message: 'invalid request ' });
 		try {
 			let uid = parseInt(id);
-			await db.execute(`DELETE FROM Ramais WHERE id = :1`, [uid]);
+			let result = await db.execute(`DELETE FROM ramais WHERE id = :1`, [uid]);
+
+			if (result.rowsAffected) {
+				await db.commit();
+			}
 		} catch (error) {
 			console.log(error);
 		}
 	},
 	updateramais: async ({ request, url }) => {
-		let id: any = url.searchParams.get('id');
+		const id = url.searchParams.get('id');
+
 		if (!id) return fail(400, { message: 'invalid request ' });
-		id = parseInt(id);
-		const { org, unidade, setor, user, ramal, servico } = Object.fromEntries(
+
+		const { org, unidade, setor, us, ramal, servico } = Object.fromEntries(
 			await request.formData()
 		) as {
 			org: string;
 			unidade: string;
 			setor: string;
-			user: string;
+			us: string;
 			ramal: string;
 			servico: string;
 		};
 
 		try {
-			await db.execute(
-				`UPDATE pessoa SET nome = :1, telefone = :2, email = :3, data_nascimento = :4
-				WHERE id = :5`,
-				[org, unidade, setor, user, ramal, servico]
+			let uid = parseInt(id);
+			let result = await db.execute(
+				`UPDATE ramais SET ORG = :2, UNIDADE = :3, SETOR = :4, US = :5 , RAMAL = :6 , SERVICO = :7
+				WHERE id = :1`,
+				[org, unidade, setor, us, ramal, servico, uid]
 			);
+
+			if (result.rowsAffected === 0) {
+			} else {
+				await db.commit();
+			}
 		} catch (error) {
 			// console.log('ERROR', error);
 		}
