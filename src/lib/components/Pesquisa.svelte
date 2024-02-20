@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Ramais } from '$lib/db/schema';
+	import { each } from 'jquery';
 	import type { PageData } from '../../routes/$types';
 	import ConfirmBox from './ConfirmBox.svelte';
 
@@ -8,17 +9,13 @@
 	export let isAdm: boolean = false;
 	export let expectedSecret: string = '';
 	export let edit: boolean = false;
-	export let ramalEdit: any;
+	export let ramalEdit: Ramal | undefined = undefined;
 
 	function opne2(ramal: any) {
 		edit = true;
 		ramalEdit = ramal;
 	}
 
-	let ramais: any;
-
-	console.log(data);
-	console.log('estar vindo undifined?', ramais);
 	export let width = '';
 	export let width2 = '';
 

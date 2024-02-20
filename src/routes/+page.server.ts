@@ -19,7 +19,9 @@ function arraysParaObjeto<T>(colunas: string[], arrays: T[][]): Record<string, T
 
 export const load: PageServerLoad = async () => {
 	const db = await getConnection();
-	const result: any = await db.execute('SELECT * FROM ramais');
+	const result: any = await db.execute('SELECT * FROM ramais FETCH FIRST 10 ROWS ONLY');
+	let count: any = await db.execute('SELECT COUNT(*) FROM ramais');
+	let total = count.rows;
 
 	if (result.metaData && result.rows && result.rows.length > 0) {
 		const colunas = result.metaData.map((column: { name: string }) => column.name);
@@ -27,8 +29,8 @@ export const load: PageServerLoad = async () => {
 
 		const titulo = objetos.shift(); // Removendo e obtendo o primeiro objeto como título
 
-		return { titulo, ramais: objetos };
+		return { titulo, ramais: objetos, total };
 	}
 
-	return { titulo: null, ramais: [] }; // ou retorne algo adequado para uma situação sem dados
+	return { titulo: null, ramais: [], total: [] }; // ou retorne algo adequado para uma situação sem dados
 };

@@ -194,7 +194,7 @@ export const actions: Actions = {
 		const index = event.url.searchParams.get('index');
 
 		const unidadenew = (await event.request.formData()).get('input');
-		console.log(unidadenew);
+
 		try {
 			let currPath = new URL(import.meta.url).pathname;
 			let folder = 'build';
@@ -216,7 +216,6 @@ export const actions: Actions = {
 			}
 			options.unidade[index] = unidadenew;
 
-			console.log(options.unidade);
 			let optionsc = JSON.stringify(options, null, 4);
 			await writeOptions(correctPath, optionsc);
 		} catch (error) {
@@ -244,7 +243,6 @@ export const actions: Actions = {
 
 			options.unidade.push(unidadenew);
 
-			console.log(options.unidade);
 			let optionsc = JSON.stringify(options, null, 4);
 			await writeOptions(correctPath, optionsc);
 		} catch (error) {
