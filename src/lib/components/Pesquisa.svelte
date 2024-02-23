@@ -25,7 +25,7 @@
 
 <div class="flex flex-col w-full bg-theme-base max-h-[600px] overflow-y-auto">
 	{#each data.ramais as ramal}
-		{#if ramal.ORG.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.UNIDADE.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.SETOR.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.USER.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.RAMAL.toLowerCase().includes(pesquisa.toLowerCase()) || ramal.SERVICO.toLowerCase().includes(pesquisa.toLowerCase())}
+		{#if pesquisa === '' || (ramal.ORG && ramal.ORG.toLowerCase().includes(pesquisa.toLowerCase())) || (ramal.UNIDADE && ramal.UNIDADE.toLowerCase().includes(pesquisa.toLowerCase())) || (ramal.SETOR && ramal.SETOR.toLowerCase().includes(pesquisa.toLowerCase())) || (ramal.USER && ramal.USER.toLowerCase().includes(pesquisa.toLowerCase())) || (ramal.RAMAL && ramal.RAMAL.toLowerCase().includes(pesquisa.toLowerCase())) || (ramal.SERVICO && ramal.SERVICO.toLowerCase().includes(pesquisa.toLowerCase()))}
 			<div class="flex w-full">
 				<span class="border h-full flex justify-center items-center uppercase {w} p-2"
 					>{ramal.ORG}</span
