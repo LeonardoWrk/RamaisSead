@@ -1,17 +1,18 @@
 <script lang="ts">
 	export let data: any;
 	let pageSize = 10;
-	$: total = data.total;
-	$: totalPages = Math.ceil(total / pageSize);
+	let total = data.total;
+	let totalPages = Math.ceil(total / pageSize);
+	console.log(totalPages);
 </script>
 
 <div class="pagination">
 	{#each Array(totalPages) as _, index}
 		<a
-			href={`?page=${totalPages}`}
-			class={`ml-6 ${index >= 5 && index < data.total - 5 ? 'hidden' : ''}`}
+			href={`?page=${index + 1}`}
+			class={`ml-6 ${index >= 5 && index < totalPages - 5 ? 'hidden' : ''}`}
 		>
-			{index >= 5 && index < data.total - 5 ? '...' : totalPages}
+			{index >= 5 && index < totalPages - 5 ? '...' : index + 1}
 		</a>
 	{/each}
 </div>

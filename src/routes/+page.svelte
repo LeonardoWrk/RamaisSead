@@ -2,6 +2,7 @@
 	import Head from '$lib/components/Head.svelte';
 	import Nav from '$lib/components/Nav.svelte';
 	import Pesquisa from '$lib/components/Pesquisa.svelte';
+	import Pagination from '$lib/components/Pagination.svelte';
 
 	import type { PageData } from './$types';
 
@@ -47,6 +48,7 @@
 				>
 			</div>
 			<Pesquisa bind:data bind:pesquisa width="w-1/4" width2="w-1/2" />
+			<Pagination bind:data />
 		</div>
 	</div>
 </div>

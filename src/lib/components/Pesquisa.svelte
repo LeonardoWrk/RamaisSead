@@ -3,6 +3,7 @@
 	import { each } from 'jquery';
 	import type { PageData } from '../../routes/$types';
 	import ConfirmBox from './ConfirmBox.svelte';
+	import Pagination from './Pagination.svelte';
 
 	export let pesquisa = '';
 	export let data: any;
