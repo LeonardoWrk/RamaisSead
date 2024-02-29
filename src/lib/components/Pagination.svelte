@@ -6,7 +6,7 @@
 	console.log(totalPages);
 </script>
 
-<div class="pagination">
+<div class="ml-[43%]">
 	{#each Array(totalPages) as _, index}
 		<a
 			href={`?page=${index + 1}`}
